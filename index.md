@@ -72,6 +72,7 @@ The bottom latches need to be pried open with a flat head or a spudger.
 
 The knob needs to be pulled firmly straight away from the board to remove it, which will allow
 the gasket to be removed.  Be careful while popping it off the start button on the top of the device.
+It is not necessary to remove the circuit board from the device.
 
 ## Wiring
 
@@ -169,12 +170,29 @@ The device should reboot and if you enter the clinician menu (hold down the `Hom
 for three seconds), you should be able to select from all of the vendor modes, including iVAPS and ST.
 These modes should allow the CPAP device to immediately be used according to the Mt Sinai BiPAP protocol.
 
+The flashing is a one-time operation.  The programmer can be unplugged and moved to another device.
+
+Restoring the old firmware is possible; there are some RTC variables that need to be adjusted.
+Script to be provided.
+
 -----
 
-![`sprintf` on the screen](images/sprintf.jpg)
 # Writing extensions
+
+![`sprintf` on the screen](images/sprintf.jpg)
 
 To be written.  Similar to [Magic Lantern](https://magiclantern.fm), since we use the
 existing vendor firmware as a library with functions at fixed addresses and fit into
 the empty space around the flash image.
+
+Ghidra files.
+
+Data structures.
+
+Configuration and variables.
+
+GUI library.
+
+GPIO library.
+
 
