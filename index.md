@@ -163,8 +163,15 @@ sudo openocd \
 	-c 'reset run' \
 ```
 
+![iVAPS mode unlocked](images/airsense-ivaps.jpg)
+
+The device should reboot and if you enter the clinician menu (hold down the `Home` button while pushing on the knob
+for three seconds), you should be able to select from all of the vendor modes, including iVAPS and ST.
+These modes should allow the CPAP device to immediately be used according to the Mt Sinai BiPAP protocol.
+
 -----
 
+![`sprintf` on the screen](images/sprintf.jpg)
 # Writing extensions
 
 To be written.  Similar to [Magic Lantern](https://magiclantern.fm), since we use the
