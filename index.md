@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
-# Jailbreak an CPAP machine to make a temporary ventilator
+# Jailbreak CPAP machines to make temporary ventilators
 
 The Airsense 10 CPAP machine is a low cost sleep therapy device that
 provides a constant pressure to help with sleep apnea and other disorders.
@@ -8,7 +8,7 @@ to function as a ventilator](https://www.resmed.com/en-us/covid-19/)",
 although they do not offer a way to do so.  What we have done instead
 it to "*jailbreak*" the device so that it is possible to run additional processes on the
 device in a way similar to [Magic Lantern](https://magiclantern.fm).
-This makes it possible to add the features necessary to use the CPAP machine
+This makes it feasible to add the features necessary to use the CPAP machine
 as a temporary ventilator to help ease the shortage
 until more ventilators are available.  This process also unlocks all of
 the modes and configuration parameters available in the vendor firmware.
