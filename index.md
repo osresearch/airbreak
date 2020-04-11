@@ -1,26 +1,28 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
-# Jailbreak an Airsense 10 CPAP machine into a temporary ventilator
+# Jailbreak an CPAP machine to make a temporary ventilator
 
-The Airsense 10 CPAP machine is a low cost sleep therapy machine that
+The Airsense 10 CPAP machine is a low cost sleep therapy device that
 provides a constant pressure to help with sleep apnea and other disorders.
 The manufacturer says it "[would require significant rework in order
 to function as a ventilator](https://www.resmed.com/en-us/covid-19/)",
-and does not offer a way to do so.  What we have done is "jailbreak"
-the device so that it is possible to run additional processes on the
-device in a way similar to [Magic Lantern](https://magiclantern.fm)
-to make it suitable as a temporary ventilator to help ease the shortage
+although they do not offer a way to do so.  What we have done instead
+it to "*jailbreak*" the device so that it is possible to run additional processes on the
+device in a way similar to [Magic Lantern](https://magiclantern.fm).
+This makes it possible to add the features necessary to use the CPAP machine
+as a temporary ventilator to help ease the shortage
 until more ventilators are available.  This process also unlocks all of
 the modes and configuration parameters available in the vendor firmware.
 
 ## Major feature:
+* Closed loop air volume control with backup respiration rates
+* Allows maximum pressure to be increased to 30 cm H2O
 * Adds a timed breathing mode that oscillates between high and low pressure
-* Allows maximum pressure to be increasd to 30 mm H2O
-* Increases the rate of pressure change from 0.2 mm/sec to 30 mm/sec
+* Allows very rapid pressure change rates compared to the stock slow ramp 0.2 cm/sec
 * Reads tuning parameters from a memory location accessible over SWD
-* Unlocks all of the vendor provided modes and configuration parameters
+* Unlocks all of the vendor modes and tunable configuration parameters
 
 ## Possible new features:
-* Draws graphs on the screen to show an immediate history of flow (almost ready)
+* Draws graphs on the screen to show an immediate history of data (almost ready)
 * Visual and audible alarms when flow stoppage or leakage rates are detected
 * GPIO interface with other systems
 
