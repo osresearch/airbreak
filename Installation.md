@@ -90,6 +90,7 @@ STlink-V2 pinout:
 
 
 ## Flashing
+![Unlocked icon](images/unlocked.png)
 
 With the device powered up and the stlink connected to the computer, run [OpenOCD](http://openocd.org/)
 to initialize the programmer and fetch the existing firmware (should take about 10 seconds):
@@ -120,6 +121,8 @@ sudo openocd \
 	-c 'reset run' \
 ```
 
+## Testing
+
 ![iVAPS mode unlocked](images/airsense-ivaps.jpg)
 
 The device should reboot and if you enter the clinician menu (hold down the `Home` button while pushing on the knob
@@ -127,6 +130,10 @@ for three seconds), you should be able to select from all of the vendor modes, i
 These modes should allow the CPAP device to immediately be used according to the Mt Sinai BiPAP protocol.
 
 The flashing is a one-time operation.  The programmer can be unplugged and moved to another device.
+
+## Restoring the vendor firmware
+
+![Gears icon](images/gears.png)
 
 Restoring the old firmware is possible; there are some RTC variables that need to be adjusted.
 Script to be provided.
