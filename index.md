@@ -25,6 +25,15 @@ Possible new features:
 * Visual and audible alarms when flow stoppage or leakage rates are detected
 * GPIO interface with other systems
 
+
+Evaluation
+===
+
+![PV curves](images/pv.png)
+
+To be written.
+
+
 Installation
 ====
 ![Torx T15 screws](images/airsense-screws.jpg)
@@ -53,15 +62,18 @@ device is reflashed with custom firmware.  The pinout of this port is not
 the usual 10-pin ARM debug header; it combines the programming pins for
 the STM32 that is the main controller, the auxillary STM8, and the PMIC.
 
-Board footprint layout:
+Board footprint layout (you don't need this unless you're soldering to
+the board):
 
-`STM32_VDD`	| 1 (square) | 2 | `STM32_NRST`
-`STM32_SWDIO`	| 3 | 4 | `STM8_SWIM`
-`STM8_VDD`	| 5 | 6 | `PMIC_TDI`
-`STM32_SWCLK`	| 7 | 8 | `STM8_TLI`
-`GND`		| 9 | 10 | `PMIC_TDO`
+| Function 		| Pin | Pin | Function |
+| ---			| --- | --- | --- |
+| `STM32_VDD`		| 1 (square) | 2 | `STM32_NRST` |
+| `STM32_SWDIO`		| 3   | 4   | `STM8_SWIM` |
+| `STM8_VDD`		| 5   | 6   | `PMIC_TDI` |
+| `STM32_SWCLK`		| 7   | 8   | `STM8_TLI` |
+| `GND`			| 9   | 10  | `PMIC_TDO` |
 
-![Connecting the TC-2050 to the STlink2](imags/airsense-stlink2.jpg)
+![Connecting the TC-2050 to the STlink2](images/airsense-stlink.jpg)
 
 The [ST-Link/V2 programming
 device](https://www.digikey.nl/product-detail/en/stmicroelectronics/ST-LINK-V2/497-10484-ND/2214535)
@@ -72,24 +84,28 @@ TC2050 to the STlink:
 
 TC2050 ribbon cable pinout:
 
-*`STM32_VDD`*	| 1 (red) | 3 | *`STM32_SWDIO`*
-`STM8_VDD`	| 5 | 7 | *`STM32_SWCLK`*
-*`GND`*		| 9 | 10 | `PMIC_TDO`
-`STM8_TLI`	| 8 | 6 | `PMIC_TDI`
-`STM8_SWIM`	| 4 | 2 | *`STM32_NRST`*
+| Function 		| Pin | Pin | Function |
+| ---			| --- | --- | --- |
+| **`STM32_VDD`**	| 1 (red) | 3 | **`STM32_SWDIO`** |
+| `STM8_VDD`		| 5   | 7   | *`STM32_SWCLK`*** |
+| **`GND`**		| 9   | 10  | `PMIC_TDO` |
+| `STM8_TLI`		| 8   | 6   | `PMIC_TDI` |
+| `STM8_SWIM`		| 4   | 2   | **`STM32_NRST`** |
 
 STlink-V2 pinout:
 
-`STM32_VDD`	|  1 |  2 | NC
-NC		|  3 |  4 | NC
-NC		|  5 |  6 | NC
-`STM32_SWDIO`	|  7 |  8 | NC
-`STM32_SWCLK`	|  9 | 10 | NC
-NC		| 11 | 12 | NC
-NC		| 13 | 14 | NC
-`STM32_NRST`	| 15 | 16 | NC
-NC		| 17 | 18 | NC
-NC		| 19 | 20 | `GND`
+| Function 	| Pin | Pin | Function |
+| ---		| --- | --- | --- |
+| `STM32_VDD`	|  1  |  2  | NC |
+| NC		|  3  |  4  | NC |
+| NC		|  5  |  6  | NC |
+| `STM32_SWDIO`	|  7  |  8  | NC |
+| `STM32_SWCLK`	|  9  | 10  | NC |
+| NC		| 11  | 12  | NC |
+| NC		| 13  | 14  | NC |
+| `STM32_NRST`	| 15  | 16  | NC |
+| NC		| 17  | 18  | NC |
+| NC		| 19  | 20  | `GND` |
 
 
 Flashing
@@ -120,6 +136,7 @@ sudo openocd \
 	-c 'reset halt' \
 	-c 'flash write_image erase stm32-unlocked.bin 0x8000000' \
 	-c 'reset run' \
+```
 
 
 Writing extensions
