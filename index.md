@@ -1,6 +1,5 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
-Jailbreak an Airsense 10 CPAP machine into a temporary ventilator
-====
+# Jailbreak an Airsense 10 CPAP machine into a temporary ventilator
 
 The Airsense 10 CPAP machine is a low cost sleep therapy machine that
 provides a constant pressure to help with sleep apnea and other disorders.
@@ -13,29 +12,28 @@ to make it suitable as a temporary ventilator to help ease the shortage
 until more ventilators are available.  This process also unlocks all of
 the modes and configuration parameters available in the vendor firmware.
 
-Major feature:
+## Major feature:
 * Adds a timed breathing mode that oscillates between high and low pressure
 * Allows maximum pressure to be increasd to 30 mm H2O
 * Increases the rate of pressure change from 0.2 mm/sec to 30 mm/sec
 * Reads tuning parameters from a memory location accessible over SWD
 * Unlocks all of the vendor provided modes and configuration parameters
 
-Possible new features:
+## Possible new features:
 * Draws graphs on the screen to show an immediate history of flow (almost ready)
 * Visual and audible alarms when flow stoppage or leakage rates are detected
 * GPIO interface with other systems
 
 
-Evaluation
-===
+# Evaluation
 
 ![PV curves](images/pv.png)
 
 To be written.
 
 
-Installation
-====
+# Installation
+
 ![Torx T15 screws](images/airsense-screws.jpg)
 
 You'll need a Torx T15 driver to remove unscrew the three faceplate screws.
@@ -79,37 +77,36 @@ The [ST-Link/V2 programming
 device](https://www.digikey.nl/product-detail/en/stmicroelectronics/ST-LINK-V2/497-10484-ND/2214535)
 is used for flashing and debugging the code on the STM32.  It has a
 different pinout from the TC2050 cable, so it is necessary to use some
-male-female 0.1" jumpers to connect the STM32 programming pins on the
-TC2050 to the STlink:
+male-female 0.1" jumpers to connect the four STM32 programming pins on the
+TC2050 to the STlink.
 
 TC2050 ribbon cable pinout:
 
 | Function 		| Pin | Pin | Function |
 | ---			| --- | --- | --- |
 | **`STM32_VDD`**	| 1 (red) | 3 | **`STM32_SWDIO`** |
-| `STM8_VDD`		| 5   | 7   | *`STM32_SWCLK`*** |
+| `STM8_VDD`		| 5   | 7   | **`STM32_SWCLK`** |
 | **`GND`**		| 9   | 10  | `PMIC_TDO` |
 | `STM8_TLI`		| 8   | 6   | `PMIC_TDI` |
 | `STM8_SWIM`		| 4   | 2   | **`STM32_NRST`** |
 
 STlink-V2 pinout:
 
-| Function 	| Pin | Pin | Function |
-| ---		| --- | --- | --- |
-| `STM32_VDD`	|  1  |  2  | NC |
-| NC		|  3  |  4  | NC |
-| NC		|  5  |  6  | NC |
-| `STM32_SWDIO`	|  7  |  8  | NC |
-| `STM32_SWCLK`	|  9  | 10  | NC |
-| NC		| 11  | 12  | NC |
-| NC		| 13  | 14  | NC |
-| `STM32_NRST`	| 15  | 16  | NC |
-| NC		| 17  | 18  | NC |
-| NC		| 19  | 20  | `GND` |
+| Function	 	| Pin | Pin | Function |
+| ---			| --- | --- | --- |
+| **`STM32_VDD`**	|  1  |  2  | NC |
+| NC			|  3  |  4  | NC |
+| NC			|  5  |  6  | NC |
+| **`STM32_SWDIO`**	|  7  |  8  | NC |
+| **`STM32_SWCLK`**	|  9  | 10  | NC |
+| NC			| 11  | 12  | NC |
+| NC			| 13  | 14  | NC |
+| **`STM32_NRST`**	| 15  | 16  | NC |
+| NC			| 17  | 18  | NC |
+| NC			| 19  | 20  | **`GND`** |
 
 
-Flashing
-===
+# Flashing
 
 With the device powered up and the stlink connected to the computer, run [OpenOCD](http://openocd.org/)
 to initialize the programmer and fetch the existing firmware (should take about 10 seconds):
@@ -139,7 +136,6 @@ sudo openocd \
 ```
 
 
-Writing extensions
-===
+# Writing extensions
 
 To be written.
