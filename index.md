@@ -122,7 +122,7 @@ sudo openocd \
 
 Patch this extracted firmware with the script that will unlock the modes and configuration bits:
 ```
-./airsense-patch stm32.bin stm32-unlocked.bin
+./patch-airsense stm32.bin stm32-unlocked.bin
 ```
 
 Now reflash the device with the modified firmware:

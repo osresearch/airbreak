@@ -1,0 +1,109 @@
+#!/bin/bash
+die() { echo >&2 "$*" ; exit 1 ; }
+
+IN=$1
+OUT=$2
+
+if [ -z "$IN" -o -z "$OUT" ]; then
+	die "Usage: $0: stm32.bin stm32-unlocked.bin"
+fi
+
+if [ ! -r "$IN" ]; then
+	die "$IN: can not open input file"
+fi
+
+
+patch() {
+	offset=`printf "%d" $1`
+	printf "patching %08x\n" $1
+	dd bs=1 seek=$offset conv=notrunc of="$OUT" status=none
+}
+
+echo "533b91127aa22e05b933db203ad56c449dc12a8c3fd62f57bd88c472a8061775  $IN"\
+| sha256sum --check \
+|| die "$IN: wrong hash"
+
+cp "$IN" "$OUT" || die "$OUT: copy failed"
+
+if false; then
+	# if you want to add the extra breath mode
+	arm-none-eabi-gcc \
+		-O3 \
+		-mcpu=cortex-m4 \
+		-mhard-float \
+		-mthumb \
+		-W \
+		-nostdlib \
+		-nostdinc \
+		breath.c \
+		-e breath \
+		-o breath.elf \
+	|| die "compile failed"
+
+	arm-none-eabi-objcopy -Obinary breath.elf breath.bin \
+	|| die "objcopy failed"
+
+	cat breath.bin | patch 0xbb734 \
+	|| die "binary patch failed"
+fi
+
+# also patch up the jump instruction that checks for tamper
+printf '\xc0\x46' | patch 0xf0 \
+|| die "startup patch failed" \
+
+# and add a message so that we know this is a modified firmware
+printf 'HACKED!' | patch 0x17500 || die failed
+printf 'NOT FOR USE\x0' | patch 0x1a540 || die failed
+printf 'WARNING! WARNING! Ventilator test firmware: Not for humans!\x00' | patch 0x1b860 || die failed
+#printf 'Ventilator\x00' | patch 0x19ba4 || die failed
+#printf 'Breath Pressure\x00' | patch 0x17aa0 || die failed
+#printf '2*Breath Period\x00' | patch 0x17b08 || die failed
+
+# leaving this off by default until we're sure it doesn't screw anything up
+if true; then
+	# patch UI limits to range between 1 and 30
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fa8 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fc4 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7eb0 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ee8 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ecc || die failed
+fi
+
+
+# set config variable 0xc value to 4 == enable more debugging data on display
+# if you set it to \x0f it will enable four separate display pages of info in sleep report mode
+printf '\x04' | patch 0x84a8 || die failed
+
+# add more mode entries, set config 0x0 mask to all bits high
+# default is 0x3, which only enables mode 1 (CPAP) and 2 (AutoSet)
+# ---> This is the real magic <---
+printf '\xff\xff' | patch 0x8590 || die failed
+
+# try enabliing extra menu items
+printf '\x01\x20' | patch 0x66470
+
+# If you want all menu items to always be visible, let this section run
+if false; then
+	# force status bit 5 always on -- always editable
+	printf '\x01\x20' | patch 0x6e502
+	# force status bit 4 always on -- this makes all the inputs show up, regardless of mode
+	printf '\x01\x20' | patch 0x6e4c4
+fi
+
+# enable all of the editable options in the settings menu
+# by turning on bit 1 of the config entries.  All of these variables
+# are listed in the gui_create_menus function
+GUI_CONFIG=0x4ef4
+GUI_CONFIG_SIZE=0x1c
+GUI_CONFIG_OFFSET=30
+
+for var in \
+	0x2f 0x1ec 0x1ed 0x24 0x25 0x1d3 0x1d6 0x1d5 0x1d7 0x26 \
+	0x1d9 0x1e0 0x1e1 0x1e2 0x1e5 0x1e4 0x1e6 0x1e7 0x1e9 0x1ea 0x1eb \
+; do
+	# set config byte 0 bit 0, 1 and 2, which makes it active
+	ADDR=`perl -e "printf '%d', $GUI_CONFIG + ($var - $GUI_CONFIG_OFFSET) * $GUI_CONFIG_SIZE"`
+	printf '\x07\x00' | patch $ADDR
+done
+
+sha256sum $OUT
