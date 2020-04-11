@@ -36,9 +36,21 @@ To be written.
 
 # Installation
 
+Unforunately the programming port is inside the machie so it requires some disassembly to reach.
+You will need the following tools:
+
+* Torx T15
+* [ST-Link/V2 stm32 programmer](https://www.digikey.com/product-detail/en/stmicroelectronics/ST-LINK-V2/497-10484-ND/2214535)
+* [TC2050-IDC](https://www.digikey.com/product-detail/en/TC2050-IDC/TC2050-IDC-ND/2605366) or [TC2050-ICD-NL](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC-NL/TC2050-IDC-NL-ND/2605367)
+* 4 male-female 0.1" jumpers
+* Computer with [OpenOCD](http://openocd.org/) and some Unix familiarity
+* `arm-none-eabi-gcc` to write extensions (not necessary to unlock the device)
+
+## Disassembly
+
 ![Torx T15 screws](images/airsense-screws.jpg)
 
-You'll need a Torx T15 driver to remove unscrew the three faceplate screws.
+First you'll need a Torx T15 driver to remove unscrew the three faceplate screws.
 
 <!-- ![Removing the side cover](images/airsense-sidecover.jpg) -->
 
@@ -108,7 +120,7 @@ STlink-V2 pinout:
 | NC			| 19  | 20  | **`GND`** |
 
 
-# Flashing
+## Flashing
 
 With the device powered up and the stlink connected to the computer, run [OpenOCD](http://openocd.org/)
 to initialize the programmer and fetch the existing firmware (should take about 10 seconds):
@@ -143,3 +155,4 @@ sudo openocd \
 # Writing extensions
 
 To be written.
+
