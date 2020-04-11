@@ -13,7 +13,7 @@ as a temporary ventilator to help ease the shortage
 until more ventilators are available.  This process also unlocks all of
 the modes and configuration parameters available in the vendor firmware.
 
-## Major feature:
+## Major features:
 * Closed loop air volume control with backup respiration rates
 * Allows maximum pressure to be increased to 30 cm H2O
 * Adds a timed breathing mode that oscillates between high and low pressure
@@ -31,7 +31,8 @@ the modes and configuration parameters available in the vendor firmware.
 
 ![PV curves](images/pv.png)
 
-To be written.
+To be written.  Currently the modified firmware is being evaluated by
+a research lab.
 
 
 # Installation
@@ -62,6 +63,8 @@ The bottom latches need to be pried open with a flat head or a spudger.
 
 The knob needs to be pulled firmly straight away from the board to remove it, which will allow
 the gasket to be removed.  Be careful while popping it off the start button on the top of the device.
+
+## Wiring
 
 ![Attaching the TC-2050 connector](images/airsense-tc2050.jpg)
 
