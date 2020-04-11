@@ -120,7 +120,9 @@ sudo openocd \
 	-c 'flash read_bank 0 stm32.bin'
 ```
 
-Patch this extracted firmware with the script that will unlock the modes and configuration bits:
+Patch this extracted firmware with the script [`patch-airsense` script](patch-airsense)
+that will unlock the vendor modes and configuration bits:
+
 ```
 ./patch-airsense stm32.bin stm32-unlocked.bin
 ```
