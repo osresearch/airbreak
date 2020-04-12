@@ -1,9 +1,18 @@
 #!/bin/bash
 
-IN=../stm32/bank0.bin
-OUT=stm32-breath.bin
+die() { echo >&2 "$*" ; exit 1 ; }	
 
-die() { echo >&2 "$*" ; exit 1 ; }
+IN=$1
+OUT=$2
+
+if [ -z "$IN" -o -z "$OUT" ]; then
+		die "Usage: $0: stm32.bin stm32-unlocked.bin"
+fi
+
+
+if [ ! -r "$IN" ]; then
+		die "$IN: can not open input file"
+fi
 
 patch() {
 	offset=`printf "%d" $1`
