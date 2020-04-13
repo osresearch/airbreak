@@ -1,14 +1,14 @@
-![CPAP running custom firmware](images/airsense-hacked.jpg)
+![CPAP running custom firmware](docs/images/airsense-hacked.jpg)
 # Jailbreaking CPAP machines to make temporary ventilators
 
 This is the README for the internals of ResMed CPAP jailbreak works;
-for a high-level overview, see (airbreak.dev)[https://airbreak.dev].
+for a high-level overview, see [airbreak.dev](https://airbreak.dev).
 
 This tree does not contain any files that are copyrighted by ResMed.
 You must have a device to extract the firmware from, which is then patched,
 and the modified version is re-flashed.
 
-You will need the tools described in (docs/installation)[docs/instalation.md].
+You will need the tools described in [docs/installation](docs/instalation.md).
 The `stubs.S` file that has been committed is for SX567-0401. Flashing it on
 a different version will likely cause problems.
 
