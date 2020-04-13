@@ -1,13 +1,17 @@
 ![CPAP running custom firmware](images/ventilator-animated.gif)
 # Airbreak: jailbreak your CPAP device
 
-In light of the COVID-19 crisis and resultant shortage of medical equipment,
-[hospitals have been using BiPAP (BIlevel Positive Airway Pressure) machines as non-invasive ventilators](https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/),
-and [several groups](https://github.com/PubInv/covid19-vent-list) are currently working on ventilator designs that involve a converted BiPAP.
-CPAP devices are cheaper, more widely available, and similar electrically and mechanically. However, they are lacking in some features that the physicians require and,
-according to their manufacturer, CPAP machines "[*would require significant rework in order to function as a ventilator*](https://www.resmed.com/en-us/covid-19/)".
-other respiratory disorders.
-
+In light of the COVID-19 crisis and resultant
+shortage of medical equipment, [hospitals have been
+using BiPAP (BIlevel Positive Airway Pressure) machines as non-invasive
+ventilators](https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/),
+and [several groups](https://github.com/PubInv/covid19-vent-list)
+are currently working on ventilator designs that involve a converted
+BiPAP.  CPAP devices are cheaper, more widely available, and similar
+both electrically and mechanically.  However, they are lacking in some
+features that the physicians require and, according to their manufacturer,
+CPAP machines "[*would require significant rework in order to function
+as a ventilator*](https://www.resmed.com/en-us/covid-19/)".
 
 What we have done it to "*jailbreak*" the the Airsense 10 CPAP (Constant
 Positive Airway Pressure) machine, a common, low-cost sleep therapy device
@@ -25,8 +29,8 @@ ventilator functionality.
 
 While we are consulting with doctors to validate that the modified
 firmware works as intended, the codebase in its current form should
-be considered a proof of concept and is not intended for use in a
-life-support capacity.  Please see the [FAQ](#faq) for more information.
+be considered a **proof of concept** and is **not intended for use in a
+life-support capacity**.  Please see the [FAQ](#faq) for more information.
 
 No IP belonging to the device manufacturer is hosted in this repository,
 nor will it be accepted as a pull request.
@@ -158,3 +162,4 @@ provide a roadmap for how these modified CPAP devices could be used.
 
 * [Installation guide](/disassembly)
 * [Writing extensions](info/extensions)
+* [info@airbreak.dev](mailto://info@airbreak.dev)
