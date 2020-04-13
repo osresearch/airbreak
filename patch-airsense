@@ -38,11 +38,10 @@ printf '\xc0\x46' | patch 0xf0 \
 printf 'HACKED!' | patch 0x17500 || die failed
 printf 'NOT FOR USE\x0' | patch 0x1a540 || die failed
 printf 'WARNING! WARNING! Ventilator test firmware: Not for humans!\x00' | patch 0x1b860 || die failed
-#printf 'Ventilator\x00' | patch 0x19ba4 || die failed
-#printf 'Breath Pressure\x00' | patch 0x17aa0 || die failed
-#printf '2*Breath Period\x00' | patch 0x17b08 || die failed
+printf 'Ventilator\x00' | patch 0x19ba4 || die failed
+printf 'Breath Pressure\x00' | patch 0x17aa0 || die failed
+printf '2*Breath Period\x00' | patch 0x17b08 || die failed
 
-# leaving this off by default until we're sure it doesn't screw anything up
 if true; then
 	# patch UI limits to range between 1 and 30
 	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fa8 || die failed
