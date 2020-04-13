@@ -1,4 +1,4 @@
-<meta property="og:titl" content="airbreak: jailbreak your CPAP devices">
+<meta property="og:title" content="airbreak: jailbreak your CPAP devices">
 <meta property="og:description" content="Tools to turn your CPAP machine into an emergency ventilator">
 <meta propery="og:url" content="https://airbreak.dev/">
 <meta propery="og:image" content="https://airbreak.dev/images/sprintf.jpg">
