@@ -25,24 +25,7 @@ echo "533b91127aa22e05b933db203ad56c449dc12a8c3fd62f57bd88c472a8061775  $IN"\
 
 cp "$IN" "$OUT" || die "$OUT: copy failed"
 
-if false; then
-	# if you want to add the extra breath mode
-	arm-none-eabi-gcc \
-		-O3 \
-		-mcpu=cortex-m4 \
-		-mhard-float \
-		-mthumb \
-		-W \
-		-nostdlib \
-		-nostdinc \
-		breath.c \
-		-e breath \
-		-o breath.elf \
-	|| die "compile failed"
-
-	arm-none-eabi-objcopy -Obinary breath.elf breath.bin \
-	|| die "objcopy failed"
-
+if [ -r breath.bin ] ; then
 	cat breath.bin | patch 0xbb734 \
 	|| die "binary patch failed"
 fi

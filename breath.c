@@ -9,6 +9,8 @@
  * mon stm32f2x options_write 0 0x2c ; reset halt ;  flash write_image erase ../stm32-breath.bin 0x8000000
 
  */
+#include "stubs.h"
+
 typedef struct {
 	float high_pressure; // in mm H20
 	float low_pressure; //  in mm H20
@@ -24,7 +26,7 @@ typedef struct {
 	int last_value;
 } breath_state_t;
 
-int breath(float target, float * base)
+int start(float target, float * base)
 {
 	// therapy manager variable dictionaries
 	float * const fvars	= (void*) 0x2000e948;
@@ -38,8 +40,8 @@ int breath(float target, float * base)
 	breath_state_t * const state = (void*) 0x20001f00;
 
 	// read current time in microseconds from tim5
-	const volatile unsigned * const tim5 = (volatile unsigned*) 0x40000c24;
-	const unsigned now = *tim5;
+	//const volatile unsigned * const tim5 = (volatile unsigned*) 0x40000c24;
+	const unsigned now = tim_read_tim5();
 
 	static const unsigned MAGIC = 0xDECAFBAD;
 
@@ -106,24 +108,12 @@ int breath(float target, float * base)
 	//motor_overshoot_obj[0x10] = 0;
 
 	// draw something
-	void (*LCD_SetClipRectMax)(void) = (void*)(0x807bb0e + 1);
-	int (*GUI_SetColor)(int color) = (void*) (0x807b5e4+1);
-	void (*GUI_DispStringAt)(const char * s, int x, int y) = (void*) (0x8072f6c+1);
-	void (*GUI_DrawPixel)(int x, int y) = (void*) (0x807b660+1);
-	const void * font_16 = (void*) 0x8060db4;
-	void (*GUI_SetFont)(const void * font) = (void*) (0x8072d48 + 1);
-	void (*GUI_GotoXY)(int x, int y) = (void*) (0x807bcea8 + 1);
-	void (*GUI_FillRect)(int x, int y, int x1, int y1) = (void*) (0x8072c1e + 1);
-	void (*LCD_FillRect)(int x, int y, int x1, int y1) = (void*) (0x807b808 + 1);
-	void (*snprintf)(char * buf, unsigned len, const char * fmt, ...) = (void*) (0x806d498 + 1);
-
 #if 1
 	// break out of the current clipping so we can drawon the entire screen
-	const unsigned gui_context_ptr = *(unsigned long*) 0x680000a0;
-	unsigned * const color_ptr = (unsigned*)(gui_context_ptr + 60);
-	short * const clip = (short*)(gui_context_ptr + 8);
-	short * const xOff = (short*)(gui_context_ptr + 76);
-	short * const yOff = (short*)(gui_context_ptr + 78);
+	unsigned * const color_ptr = (unsigned*)(gui_context + 60);
+	short * const clip = (short*)(gui_context + 8);
+	short * const xOff = (short*)(gui_context + 76);
+	short * const yOff = (short*)(gui_context + 78);
 	const short old_x0 = clip[0];
 	const short old_y0 = clip[1];
 	const short old_x1 = clip[2];
@@ -146,12 +136,12 @@ int breath(float target, float * base)
 /*
 	GUI_SetColor(0xFF0000);
 	GUI_SetFont(font_16);
-	static const char __attribute__((__section__(".text"))) msg[] = "Hello, world!";
-	static const char __attribute__((__section__(".text"))) fmt[] = "%d.%02d";
-	GUI_DispStringAt(msg, 10, 130);
+	//static const char __attribute__((__section__(".text"))) msg[] = "Hello, world!";
+	//static const char __attribute__((__section__(".text"))) fmt[] = "%d.%02d";
+	GUI_DispStringAt("Hello, world", 10, 130);
 	char buf[16];
 	int flow = fvars[1] * 100;
-	snprintf(buf, sizeof(buf), fmt, flow / 100, flow % 100);
+	snprintf(buf, sizeof(buf), "%d.%02d", flow / 100, flow % 100);
 	GUI_SetColor(0x00FF00);
 	GUI_DispStringAt(buf, 40, 150);
 */
@@ -180,13 +170,13 @@ int breath(float target, float * base)
 
 	// draw 5, 10, 15, 20 very faintly
 	GUI_SetColor(0x202020);
-	GUI_DrawPixel(state->sample, center - (2 * 10 - height/2));
-	GUI_DrawPixel(state->sample, center - (2 * 20 - height/2));
-	GUI_DrawPixel(state->sample, center - (2 * 30 - height/2));
+	LCD_DrawPixel(state->sample, center - (2 * 10 - height/2));
+	LCD_DrawPixel(state->sample, center - (2 * 20 - height/2));
+	LCD_DrawPixel(state->sample, center - (2 * 30 - height/2));
 
 	// draw the current commanded pressure faintly
 	GUI_SetColor(0x0000F0);
-	GUI_DrawPixel(state->sample, center - command);
+	LCD_DrawPixel(state->sample, center - command);
 
 	// draw thje strip chart in bright green
 	GUI_SetColor(0x00FF00);
@@ -194,10 +184,10 @@ int breath(float target, float * base)
 	if (state->last_value < value)
 	{
 		for(int y = state->last_value ; y <= value ; y++)
-			GUI_DrawPixel(state->sample, center - y);
+			LCD_DrawPixel(state->sample, center - y);
 	} else {
 		for(int y = value ; y <= state->last_value ; y++)
-			GUI_DrawPixel(state->sample, center - y);
+			LCD_DrawPixel(state->sample, center - y);
 	}
 
 
