@@ -60,10 +60,10 @@ researchers, biomedical engineers, and clinical pulmonologists, it has
 not yet been put through FDA approval.  Additionally, the
 [Mt Sinai's protocols for off-label non-invasive ventilation](https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf)
 require additional modifications such as viral filter and remote control
-before the machines are aready for clinical use.
+before the machines are ready for clinical use.
 
 ## Could this sort of hack alleviate the shortage of ventilators?
-If the manufactuers developed their own firmware updates, or the FDA
+If the manufacturers developed their own firmware updates, or the FDA
 approves the jailbroken ones, this could have an extremely large role
 in bridging the ventilator shortage gap.
 There are millions of unused or underutilized CPAP and BiPAP devices sitting in
@@ -88,7 +88,7 @@ from a technical, expertise, safety and regulatory perspective.
 * The second is a practical one:  There are lots of different models of
 CPAP and BiPAP devices, and reverse-engineering is a slow and painful
 process. We modified the most common model of CPAP in America, but to
-get lots of vetilators quickly, you'd need a firmware modification for
+get lots of ventilators quickly, you'd need a firmware modification for
 every mode of CPAP. What we've found in our work is that the work needed
 for the manufacturer to implement these upgrades is pretty minimal --
 the manufacturer has access to the source code, to the schematics,

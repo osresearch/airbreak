@@ -43,7 +43,9 @@ patch_code() {
 
 	if [ -r breath.bin ] ; then
 		cat breath.bin | patch 0xbb734 \ || die "binary patch failed"
-	fi
+	else
+		die "breath.bin not found, did you run make?"
+	fi 
 }
 
 unlock_ui_limits() {
