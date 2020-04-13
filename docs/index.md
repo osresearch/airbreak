@@ -50,6 +50,7 @@ nor will it be accepted as a pull request.
 * Closed loop air pressure control with backup respiration rates ("VAPS" mode)
 * Visual and audible alarms when flow stoppage or leakage rates are detected
 * GPIO interface with other systems
+* Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435)
 
 # FAQ
 
