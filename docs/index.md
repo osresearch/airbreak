@@ -26,7 +26,7 @@ ventilator functionality.
 While we are consulting with doctors to validate that the modified
 firmware works as intended, the codebase in its current form should
 be considered a proof of concept and is not intended for use in a
-life-support capacity.  Please see the [FAQ](#FAQ) for more information.
+life-support capacity.  Please see the [FAQ](#faq) for more information.
 
 No IP belonging to the device manufacturer is hosted in this repository,
 nor will it be accepted as a pull request.
