@@ -96,7 +96,7 @@ STlink-V2 pinout:
 !!! Warning
 	A genuine ST-Link programmer uses the STM32_VDD pin to detect the target voltage, not to provide power. Connecting a generic programmer or a Raspberry Pi with this pin configuration will cause the programmer to be back-powered through the AirSense PCB.
 
-	**If you are using a SWD programmer other than the ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
+	**If you are using a SWD programmer other than a genuine ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
 
 
 Okay, now you're ready to [flash the firmware!](firmware.md)

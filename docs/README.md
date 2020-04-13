@@ -12,8 +12,7 @@ CPAP devices are cheaper, more widely available, and similar electrically and me
 according to their manufacturer, CPAP machines "[*would require significant rework in order to function as a ventilator*](https://www.resmed.com/en-us/covid-19/)".
 
 What we have done it to "*jailbreak*" the CPAP machine so that it
-is possible to run additional tasks on the device to add the features
-
+is possible to run additional tasks on the device to add the features 
 necessary to use the device as a temporary ventilator.  This can help ease
 the shortage until more real ventilators are available.
 
