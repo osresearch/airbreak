@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/ventilator-animated.gif)
-# Airbreak: jailbreaking CPAP devices
+# Airbreak: jailbreak your CPAP devices
 
 In light of the COVID-19 crisis and resultant
 shortage of medical equipment, [hospitals have developed protocols for
