@@ -1,5 +1,10 @@
+<meta property="og:titl" content="airbreak: jailbreak your CPAP devices">
+<meta property="og:description" content="Tools to turn your CPAP machine into an emergency ventilator">
+<meta propery="og:url" content="https://airbreak.dev/">
+<meta propery="og:image" content="https://airbreak.dev/images/sprintf.jpg">
+
 ![CPAP running custom firmware](images/ventilator-animated.gif)
-# Airbreak: jailbreaking CPAP devices
+# Airbreak: jailbreak your CPAP devices
 
 In light of the COVID-19 crisis and resultant
 shortage of medical equipment, [hospitals have developed protocols for
