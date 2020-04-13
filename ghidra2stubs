@@ -1,0 +1,62 @@
+#!/usr/bin/perl
+# Generate a linker script from a Ghidra XML file
+use warnings;
+use strict;
+
+print <<"";
+#define NSTUB(addr,name) \\
+	.global name; \\
+	.extern name; \\
+	name = addr
+.text
+
+
+my %types;
+my %names;
+
+while(<>)
+{
+	if (my ($addr,$type) = m/
+		<DEFINED_DATA \s+
+		ADDRESS="([0-9a-f]+)" \s+
+		DATATYPE="(.*?)"
+	/msgx)
+	{
+		$types{hex $addr} = $type;
+		next;
+	}
+
+	if (my ($addr,$name) = m/
+		<SYMBOL \s+
+		ADDRESS="([0-9a-f]+)" \s+
+		NAME="(.*?)" \s+
+		.*
+		TYPE="global"
+	/msgx)
+	{
+		# fixup any names
+		$name =~ s/[ -]/_/msgx;
+		$addr = hex $addr;
+
+		# if the type isn't defined, it is probably a function
+		# and needs to be converted to Thumb
+		$addr += 1 unless exists $types{$addr};
+
+		push @{$names{$name}}, $addr;
+	}
+}
+
+for my $name (keys %names)
+{
+	my $addrs = $names{$name};
+	if (@$addrs == 1)
+	{
+		printf "NSTUB(0x%08x, %s)\n", $addrs->[0], $name;
+		next;
+	}
+
+	for my $addr (@$addrs)
+	{
+		printf "NSTUB(0x%08x, %s_%05x)\n", $addr, $name, $addr & 0xFFFFF;
+	}
+	}

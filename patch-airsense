@@ -41,22 +41,9 @@ patch_code() {
 	#if you want to add the extra breath mode
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 0) ))
 
-	arm-none-eabi-gcc \
-		-O3 \
-		-mcpu=cortex-m4 \
-		-mhard-float \
-		-mthumb \
-		-W \
-		-nostdlib \
-		-nostdinc \
-		breath.c \
-		-e breath \
-		-o breath.elf \
-	|| die "compile failed"
-	arm-none-eabi-objcopy -Obinary breath.elf breath.bin \
-	|| die "objcopy failed"
-
-	cat breath.bin | patch 0xbb734 \ || die "binary patch failed"
+	if [ -r breath.bin ] ; then
+		cat breath.bin | patch 0xbb734 \ || die "binary patch failed"
+	fi
 }
 
 unlock_ui_limits() {
@@ -119,7 +106,7 @@ gui_config () {
 	done
 }
 
-#patch_code
+patch_code
 unlock_ui_limits
 extra_debug
 extra_modes
