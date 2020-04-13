@@ -1,5 +1,12 @@
-../cpap/stm32-breath.bin: breath.bin
+all: stm32-breath.bin
+
+stm32-breath.bin: breath.bin
 	./patch-airsense ../cpap/stm32.bin $@
+
+mkdocs:
+	mkdocs serve
+deploy:
+	mkdocs gh-deploy
 
 # The breath extension replaces the function at 0x80bb734 with
 # a simple on/off timer for alternating between two pressures.
