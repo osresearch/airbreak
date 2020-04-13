@@ -36,6 +36,7 @@ while(<>)
 	{
 		# fixup any names
 		$name =~ s/[ -]/_/msgx;
+		$name = "_ADC" if $name eq "ADC";
 		$addr = hex $addr;
 
 		# if the type isn't defined, it is probably a function
@@ -46,8 +47,14 @@ while(<>)
 	}
 }
 
-for my $name (keys %names)
+for my $name (sort { $names{$a}->[0] <=> $names{$b}->[0] } keys %names)
 {
+	# ignore some common ones
+	next if $name =~ /^case/;
+	next if $name =~ /^switch/;
+	next if $name =~ /^nop/;
+	next if $name =~ /^return/;
+
 	my $addrs = $names{$name};
 	if (@$addrs == 1)
 	{

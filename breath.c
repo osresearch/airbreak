@@ -131,9 +131,7 @@ int start(float target, float * base)
 #if 0
 	GUI_SetColor(0x8);
 	GUI_FillRect(0, 130, 200, 160);
-#endif
 	
-/*
 	GUI_SetColor(0xFF0000);
 	GUI_SetFont(font_16);
 	//static const char __attribute__((__section__(".text"))) msg[] = "Hello, world!";
@@ -144,7 +142,7 @@ int start(float target, float * base)
 	snprintf(buf, sizeof(buf), "%d.%02d", flow / 100, flow % 100);
 	GUI_SetColor(0x00FF00);
 	GUI_DispStringAt(buf, 40, 150);
-*/
+#endif
 
 	// Draw a strip chart
 	const int width = 240;
