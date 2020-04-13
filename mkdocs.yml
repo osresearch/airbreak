@@ -1,0 +1,21 @@
+site_name: airbreak
+repo_url: https://github.com/osresearch/airbreak/
+edit_uri: ""
+theme: flatly
+markdown_extensions:
+        - admonition
+nav:
+        - Guide:
+                - Disassembly: 'disassembly.md'
+                - Firmware: 'firmware.md'
+        - Information:
+                - Hardware:
+                        - Datasheets: 'info/datasheets.md'
+                        - Pinouts: 'info/pinouts.md'
+                        - Useful Test Points: 'info/testpoints.md'
+                - Software:
+                        - OpenOCD Scripts: 'info/tcl.md'
+                        - Windows Setup Instructions: 'info/windows.md'
+                - Firmware:
+                        - Documentation: 'info/firmware-docs.md'
+                        - Development: 'info/extensions.md'

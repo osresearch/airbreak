@@ -1,18 +1,30 @@
-![CPAP running custom firmware](images/airsense-hacked.jpg)
-# Jailbreaking CPAP machines to make temporary ventilators
+![CPAP running custom firmware](images/ventilator-animated.gif)
+# Airbreak
 
+The Airsense 10 CPAP (Constant Positive Airway Pressure) machine
+is a common, low-cost sleep therapy device intended to treat sleep apnea and
+other respiratory disorders.  
 
-To address the ventilator shortage, [some hospitals have been using BiPAP machines as non-invasive ventilators](https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/).
-The Airsense 10 CPAP machine even more widely avaialble than the BiPAP/ST machine,
-although in its stock firmware it is missing features the physicians required
-and the manufacturer says their CPAP machines "[*would require significant rework in order to function as a ventilator*](https://www.resmed.com/en-us/covid-19/)".
+In light of the COVID-19 crisis and resultant shortage of medical equipment,
+[hospitals have been using BiPAP (BIlevel Positive Airway Pressure) machines as non-invasive ventilators](https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/),
+and [several groups](https://github.com/PubInv/covid19-vent-list) are currently working on ventilator designs that involve a converted BiPAP.
+CPAP devices are cheaper, more widely available, and similar electrically and mechanically. However, they are not considered useful; 
+according to their manufacturer, CPAP machines "[*would require significant rework in order to function as a ventilator*](https://www.resmed.com/en-us/covid-19/)".
 
-What we have done it to "*jailbreak*" the CPAP machine so that it is
-possible to run additional tasks on the device to add the features
-necessary to use the device as a temporary ventilator.  This could be
-used to help ease the shortage until more real ventilators are available.
-This process also unlocks all of the modes and configuration parameters
-available in the vendor firmware.
+What we have done it to "*jailbreak*" the CPAP machine so that it
+is possible to run additional tasks on the device to add the features
+
+necessary to use the device as a temporary ventilator.  This can help ease
+the shortage until more real ventilators are available.
+
+Our changes bring the Airsense S10 to near feature parity with BiPAP machines from the same manufacturer, boost the maximum pressure output available, and provide a starting point to add more advanced emergency ventilator functionality.
+
+## Disclaimer
+
+While we are consulting with doctors to validate that the modified firmware works as intended, the codebase in its current form should be considered
+a proof of concept and is not intended for use in a life-support capacity.  
+
+No IP belonging to the device manufacturer is hosted in this repository, nor will it be accepted as a pull request.
 
 ## Major features:
 * Adds a timed breathing mode that oscillates between high and low pressure (stock firmware is only a single pressure)
@@ -120,7 +132,7 @@ absolutely refused to cooperate, but the safest and best path is for
 the manufacturers to enable this upgrade on their own.
 
 Device owners can also use these tools to write their own [extensions to customize
-their devices for their needs](extensions.md), similar to [Magic Lantern](https://magiclantern.fm)
+their devices for their needs](info/extensions), similar to [Magic Lantern](https://magiclantern.fm)
 for cameras, as well as the better understand their own therapy by gaining
 access to the sensors on the device.  They can add features like the on-screen
 graphs shown above, or integrate external systems through the expansion port.
@@ -139,5 +151,5 @@ provide a roadmap for how these modified CPAP devices could be used.
 
 # More details
 
-* [Installation instructions](installation.md)
-* [Writing extensions](extensions.md)
+* [Installation guide](/disassembly)
+* [Writing extensions](info/extensions)

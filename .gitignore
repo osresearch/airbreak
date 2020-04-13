@@ -1,3 +1,6 @@
+site/
+stm32/
+
 *.o
 *.elf
 *.bin
