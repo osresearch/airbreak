@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
-# Jailbreak CPAP machines to make temporary ventilators
+# Jailbreaking CPAP machines to make temporary ventilators
 
 
 To address the ventilator shortage, [some hospitals have been using BiPAP machines as non-invasive ventilators](https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/).
@@ -24,7 +24,7 @@ available in the vendor firmware.
 * Real-time data export over SWD
 * Real-time graphs on the screen to show an immediate history of data
 
-## Possible new features:
+## Features under development:
 * Closed loop air pressure control with backup respiration rates ("VAPS" mode)
 * Visual and audible alarms when flow stoppage or leakage rates are detected
 * GPIO interface with other systems
@@ -45,7 +45,20 @@ flashed on CPAP machines and used to treat COVID patients immediately.
 The firmware that we've developed is an effective demonstration of
 the capability, and while it has been reviewed and validated by expert
 researchers, biomedical engineers, and clinical pulmonologists, it has
-not yet been put through FDA approval.
+not yet been put through FDA approval.  Additionally, the
+[Mt Sinai's protocols for off-label non-invasive ventilation](https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf)
+require additional modifications such as viral filter and remote control
+before the machines are aready for clinical use.
+
+## Could this sort of hack alleviate the shortage of ventilators?
+If the manufactuers developed their own firmware updates, or the FDA
+approves the jailbroken ones, this could have an extremely large role
+in bridging the ventilator shortage gap.
+There are millions of unused or underutilized CPAP and BiPAP devices sitting in
+closets in America, and roughly another 500,000 units in warehouses in
+the country.  These devices can be used as an alternate ventilator, for
+low-resource hospitals who are still waiting for the hospital ventilators
+to arrive.
 
 ## Could this go through FDA approval?
 If there were no other option it could, but we believe that the best
@@ -91,40 +104,40 @@ serial number, specific units to function as ventilators, without having
 to open them up -- it can all work over the air.
 
 ## So what's the point?
-What our firmware does is show that (1) it is possible to re-program these
+![Onscreen graphs](images/sprintf.jpg)
+
+What our firmware does is show that it is possible to re-program these
 devices in a way that doctors can use to effectively ventilate COVID
-patients, (2), we are able to confirm the functionality of the devices
+patients. We have been able to confirm the functionality of the devices
 in instrumented patient circuits operated by experts in pulmonological
-measurement, and (3), there are doctors who agree that, if they had an
-FDA-approved machine that performs the role.  We do have a path to get
-this firmware through FDA, and we would apply for FDA approval under
-the Emergency Use Authorization if the manufacturers absolutely refused
-to cooperate, but the safest and best path is for the manufacturers to
-enable this upgrade on their own.
+measurement. And there are doctors who agree that, if they had an
+FDA-approved machine that could that can do what these machines are doing,
+then they could use them to clinically ventilate COVID patients in an ICU.
 
-## Could this sort of hack alleviate the shortage of ventilators?
-If the manufactuers developed their own firmware updates, or the FDA
-approves the jailbroken ones, this could have an extremely large role
-in bridging the ventilator shortage gap.
-There are roughly 2.9 million unused CPAP and BiPAP devices sitting on
-shelves in America, and roughly another 500,000 units in warehouses in
-the country.  These devices can be used as an alternate ventilator, for
-low-resource hospitals who are still waiting for the hospital ventilators
-to arrive.
+We do have a path to get this firmware through FDA, and we would apply for
+FDA approval under the Emergency Use Authorization if the manufacturers
+absolutely refused to cooperate, but the safest and best path is for
+the manufacturers to enable this upgrade on their own.
 
+Device owners can also use these tools to write their own [extensions to customize
+their devices for their needs](extensions.md), similar to [Magic Lantern](https://magiclantern.fm)
+for cameras, as well as the better understand their own therapy by gaining
+access to the sensors on the device.  They can add features like the on-screen
+graphs shown above, or integrate external systems through the expansion port.
 
 # Evaluation
 
 ![PV curves](images/pv.png)
 
 To be written.  Currently the modified firmware is being evaluated by
-a research lab.  There are other pieces necessary to use the devices in
-a clinical setting, such as viral traps and O2 inputs.
+research labs and pulmnologists.  There are other pieces necessary to
+use the devices in a clinical setting, such as filter traps, O2 inputs,
+alarms, etc.
 
 [Mt Sinai's BiPAP protocols for non-invasive ventilation](https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf)
-provide a roadmap for how these CPAP devices could be used.
+provide a roadmap for how these modified CPAP devices could be used.
 
 # More details
 
-* [Installation instructions](Installation.md)
-* [Writing extensions](Extensions.md)
+* [Installation instructions](installation.md)
+* [Writing extensions](extensions.md)
