@@ -14,12 +14,14 @@ typedef struct {
 	float low_pressure; //  in mm H20
 	unsigned high_time; // in microseconds
 	unsigned low_time; // in microseconds
+	float smoothing;
 
 	unsigned magic;
 	unsigned last_change;
 	unsigned state;
-	unsigned yoff;
-	unsigned char flow[64];
+	unsigned sample;
+	float target;
+	int last_value;
 } breath_state_t;
 
 int breath(float target, float * base)
@@ -27,6 +29,10 @@ int breath(float target, float * base)
 	// therapy manager variable dictionaries
 	float * const fvars	= (void*) 0x2000e948;
 	int * const ivars	= (void*) 0x2000e750;
+
+	// don't do anything if we are not in an active therapy mode
+	if (ivars[0x6f] == 0)
+		return 0;
 
 	// our state is is at the top of SRAM
 	breath_state_t * const state = (void*) 0x20001f00;
@@ -45,6 +51,10 @@ int breath(float target, float * base)
 		state->low_pressure = 0;
 		state->high_time = 0; // microseconds
 		state->low_time = 0;
+		state->target = 0.0;
+		state->smoothing = 3;
+		state->sample = 0;
+		state->last_value = 0;
 		state->magic = MAGIC;
 	}
 
@@ -80,12 +90,129 @@ int breath(float target, float * base)
 	// fvars[0x0a] == target low
 	
 	if (state->state)
-		fvars[0x2d] = high_pressure;
+		state->target = high_pressure;
 	else
-		fvars[0x2d] = low_pressure;
+		state->target = low_pressure;
+		
+	// smoothly ramp to the new value
+	float smooth_target = (state->smoothing * fvars[0x2d] + state->target) / (state->smoothing + 1);
+	fvars[0x2d] = smooth_target;
 
 	// every time through update the max pressure difference
 	fvars[0x0d] = 30.0;
+
+	// turn off the motor overshoot detector to prevent it from updating fvar[0x34]
+	//unsigned char * const motor_overshoot_obj = (void*) 0x200177bc;
+	//motor_overshoot_obj[0x10] = 0;
+
+	// draw something
+	void (*LCD_SetClipRectMax)(void) = (void*)(0x807bb0e + 1);
+	int (*GUI_SetColor)(int color) = (void*) (0x807b5e4+1);
+	void (*GUI_DispStringAt)(const char * s, int x, int y) = (void*) (0x8072f6c+1);
+	void (*GUI_DrawPixel)(int x, int y) = (void*) (0x807b660+1);
+	const void * font_16 = (void*) 0x8060db4;
+	void (*GUI_SetFont)(const void * font) = (void*) (0x8072d48 + 1);
+	void (*GUI_GotoXY)(int x, int y) = (void*) (0x807bcea8 + 1);
+	void (*GUI_FillRect)(int x, int y, int x1, int y1) = (void*) (0x8072c1e + 1);
+	void (*LCD_FillRect)(int x, int y, int x1, int y1) = (void*) (0x807b808 + 1);
+	void (*snprintf)(char * buf, unsigned len, const char * fmt, ...) = (void*) (0x806d498 + 1);
+
+#if 1
+	// break out of the current clipping so we can drawon the entire screen
+	const unsigned gui_context_ptr = *(unsigned long*) 0x680000a0;
+	unsigned * const color_ptr = (unsigned*)(gui_context_ptr + 60);
+	short * const clip = (short*)(gui_context_ptr + 8);
+	short * const xOff = (short*)(gui_context_ptr + 76);
+	short * const yOff = (short*)(gui_context_ptr + 78);
+	const short old_x0 = clip[0];
+	const short old_y0 = clip[1];
+	const short old_x1 = clip[2];
+	const short old_y1 = clip[3];
+	const short old_xOff = *xOff;
+	const short old_yOff = *yOff;
+	const unsigned old_color = *color_ptr;
+	clip[0] = 0;
+	clip[1] = 0;
+	clip[2] = 0x1000;
+	clip[3] = 0x1000;
+	*xOff = 0;
+	*yOff = 0;
+
+#if 0
+	GUI_SetColor(0x8);
+	GUI_FillRect(0, 130, 200, 160);
+#endif
+	
+/*
+	GUI_SetColor(0xFF0000);
+	GUI_SetFont(font_16);
+	static const char __attribute__((__section__(".text"))) msg[] = "Hello, world!";
+	static const char __attribute__((__section__(".text"))) fmt[] = "%d.%02d";
+	GUI_DispStringAt(msg, 10, 130);
+	char buf[16];
+	int flow = fvars[1] * 100;
+	snprintf(buf, sizeof(buf), fmt, flow / 100, flow % 100);
+	GUI_SetColor(0x00FF00);
+	GUI_DispStringAt(buf, 40, 150);
+*/
+
+	// Draw a strip chart
+	const int width = 240;
+	const int center = 190;
+	const int height = 80;
+#if 0
+	// flow is roughly 
+	int value = fvars[3];
+#else
+	// actual pressure 0 - 32, scaled to -30 to 30
+	int value = 2 * fvars[2] - height/2;
+	int command = 2 * fvars[0x2d] - height/2;
+#endif
+	if (value < -height/2)
+		value = -height/2;
+	else
+	if (value > +height/2)
+		value = +height/2;
+
+	GUI_SetColor(0x0);
+	LCD_FillRect(state->sample, center - height/2, state->sample + 8, center + height/2);
+	// bgr?
+
+	// draw 5, 10, 15, 20 very faintly
+	GUI_SetColor(0x202020);
+	GUI_DrawPixel(state->sample, center - (2 * 10 - height/2));
+	GUI_DrawPixel(state->sample, center - (2 * 20 - height/2));
+	GUI_DrawPixel(state->sample, center - (2 * 30 - height/2));
+
+	// draw the current commanded pressure faintly
+	GUI_SetColor(0x0000F0);
+	GUI_DrawPixel(state->sample, center - command);
+
+	// draw thje strip chart in bright green
+	GUI_SetColor(0x00FF00);
+
+	if (state->last_value < value)
+	{
+		for(int y = state->last_value ; y <= value ; y++)
+			GUI_DrawPixel(state->sample, center - y);
+	} else {
+		for(int y = value ; y <= state->last_value ; y++)
+			GUI_DrawPixel(state->sample, center - y);
+	}
+
+
+	state->last_value = value;
+	state->sample = (state->sample + 1) % width;
+
+	// restore the old clipping rectangle
+	clip[0] = old_x0;
+	clip[1] = old_y0;
+	clip[2] = old_x1;
+	clip[3] = old_y1;
+	*xOff = old_xOff;
+	*yOff = old_yOff;
+	*color_ptr = old_color;
+#endif
 
 	return 1;
 }
