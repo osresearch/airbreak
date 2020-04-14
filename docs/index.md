@@ -100,6 +100,8 @@ low-resource hospitals who are still waiting for the hospital ventilators
 to arrive.
 
 ## Could homebrew firmware go through FDA approval?
+![Airsense 10 CPAP machine with iVAPS configuration menu](images/airsense-ivaps.jpg)
+
 If there were no other option, our firmware could go through FDA approval,
 but we believe that the best route for rolling out these upgrades is
 to work with the manufacturers to use their resources to validate and
@@ -124,7 +126,7 @@ the manufacturer has access to the source code, to the schematics,
 and to the engineers who are intimately familiar with physiology and
 safety standards.  We've found that, in many cases, the bulk of the
 work has already gone through FDA approval, like the iVAPS menu that
-is in the firmware on the ResMed Airsense device.  Even if other
+is in the firmware on the ResMed Airsense device show above.  Even if other
 manufacturers had not written a line of code for their CPAP models, the
 simple pressure-control ventilator mode that we were able to implement
 is very simple to develop, is designed to work on every CPAP device in
