@@ -13,3 +13,6 @@ provide a roadmap for how these modified CPAP devices could be used.
 
 The UK's [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435)
 have criteria that should be met before this sort of modification can be deployed.
+
+Does running the pump at 30 cm H<sub>2</sub>O cause a reduction in the
+life of the machine?
