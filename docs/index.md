@@ -15,7 +15,7 @@ the physicians require and, according to their manufacturer, CPAP
 machines "[*would require significant rework in order to function as
 a ventilator*](https://www.resmed.com/en-us/covid-19/)".
 
-What we have done it to "*jailbreak*" the the Airsense 10 CPAP
+What we have done is to "*jailbreak*" the the Airsense 10 CPAP
 machine, a common, low-cost sleep therapy device
 intended to treat sleep apnea, so that it is possible to run additional
 tasks on the device. These new tasks add the features and adjust the range of
@@ -55,7 +55,7 @@ nor will it be accepted as a pull request.
 
 # FAQ
 
-## What's the difference between the CPAP and BiPAP machines?
+## What's the difference between CPAP and BiPAP machines?
 
 ![Therapy mode menu on an unlocked Airsense 10 CPAP machine](images/airsense-modes.jpg)
 
@@ -88,10 +88,10 @@ of ventilating COVID patients, that would be a huge boon to the hospitals
 and health care workers around the world who are struggling with a lack
 of ventilators or alternatives to treat the influx of COVID patients.
 
-Adding a homebrew function to the existing firmware that alternate
+Adding a homebrew function to the existing firmware that alternates
 between pressures with a configurable delay allows the CPAP to effectively
 function as a Pressure Control Ventilator (PCV) for sedated patients.
-Enabling the vendor provided iVAPS mode,
+Enabling the vendor-provided iVAPS mode,
 along with [further customization and new extensions](info/extensions),
 should make the devices even more flexible and suitable for clinical use.
 
@@ -129,7 +129,7 @@ factors at play here:
 
 * The first is a regulatory/safety one:  Under the recently-released
 FDA guidance on hardware and software modification of CPAP and BiPAP
-devices to treat COVID patients, the manufacturer has a carte blanche
+devices to treat COVID patients, the manufacturer has carte blanche
 to release an updated version of their firmware for their own devices
 without requiring explicit FDA approval -- they are in the best position
 from a technical, expertise, safety and regulatory perspective.
@@ -145,20 +145,20 @@ the manufacturer has access to the source code, to the schematics,
 and to the engineers who are intimately familiar with physiology and
 safety standards.  We've found that, in many cases, the bulk of the
 work has already gone through FDA approval, like the iVAPS menu that
-is in the firmware on the ResMed Airsense device show above.  Even if other
+is in the firmware on the ResMed Airsense device shown above.  Even if other
 manufacturers had not written a line of code for their CPAP models, the
-simple pressure-control ventilator mode that we were able to implement
-is very simple to develop, is designed to work on every CPAP device in
+pressure-control ventilator mode that we were able to implement
+is very simple to develop, designed to work on every CPAP device in
 existence, and would be a very low technology and regulatory barrier
-for manufacturers who have the right people and resources.
+for manufacturers with the right people and resources.
 
 * The third is related to making these jailbreaks at scale:  We could take
 in every unused CPAP device in the country, [unscrew the case](disassembly)
 and [re-flash the firmware](firmware).  It's slow and expensive but could
 be solved with lots and lots of people.  The thing is, of the 8 million
 CPAPs in the country, almost all 5 million shipped over the last 3 years
-have a cellular IoT connection that is always on, reporting back usage
-information to the doctors and the insurance companies.  That cellular
+have an always-on cellular IoT connection, reporting back usage
+information to doctors and insurance companies.  That cellular
 connection also has over-the-air upgrade capability that can only be
 accessed from within the IT infrastructure of the device manufacturers.
 This is a big deal -- it means that they can selectively upgrade, by
