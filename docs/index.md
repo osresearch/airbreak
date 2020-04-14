@@ -156,7 +156,8 @@ graphs shown above, or integrate external systems through the expansion port.
 # More details
 
 * [Clinical evaluation](evaluation)
-* [Installation guide](/disassembly)
+* [Disassembly and wiring instructions](/disassembly)
+* [Firmware flashing guide](/firmware)
 * [Writing extensions](info/extensions)
 * [github.com/osresearch/airbreak](https://github.com/osresearch/airbreak)
 * [info@airbreak.dev](mailto://info@airbreak.dev)
