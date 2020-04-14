@@ -55,12 +55,22 @@ nor will it be accepted as a pull request.
 # FAQ
 
 ## What's the difference between the CPAP and BiPAP machines?
-The Airsense 10 that we have modified is a low cost sleep therapy device that
-provides a *Constant* air pressure to help with sleep apnea and other disorders.
-The BiPAP machines can produce two levels of pressure, which allows them to
-be used a temporary ventilators.  Adding a function to the existing firmware
-that alternate between pressures allows the CPAP to effectively function
-similar to a BiPAP system.
+The Airsense 10 that we have modified is a low cost sleep therapy device
+that provides a *Constant* air pressure to help with sleep apnea and
+other disorders.  Adding a homebrew function to the existing firmware
+that alternate between pressures with a configurable delay allows the
+CPAP to effectively function as a Pressure Control Ventilator for sedated
+patients.  The BiPAP machines can also produce two levels of pressure and
+they also have the ability to synchronize with the patient's breathing,
+which allows them to be used a temporary ventilators for non-sedated
+patients.
+
+Enabling the vendor's BiPAP mode on the CPAP machines appears to work;
+the respiration rate is detected and the backup respiration rate takes
+over if the user stops breathing.  This indicates that there are sufficient
+sensors in the CPAP machine to perform the same functions as the BiPAP.
+Further customization for clincal use is possible by writing
+[new extensions](info/extensions.md) for the firmware in the machine.
 
 ## Can jailbroken CPAP devices be used to treat COVID patients?
 We want to be very clear here: this modified firmware should **not** be
