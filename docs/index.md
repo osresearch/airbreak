@@ -43,7 +43,7 @@ nor will it be accepted as a pull request.
 * Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is limited to 20cm H<sub>2</sub>O).
 * Allows smooth rapid pressure change rates for respiration rates up to 30 breaths per minute (stock firmware changes pressure at less than 1 cm/sec).
 * Unlocks all of the vendor modes and tunable configuration parameters, including ST and iVAPS modes present in the firmware.
-* Provides access to all of the sensors (flow, pressure, temperature, etc).
+* Provides access to all of the sensors (flow, pressure, temperature, tidal volume, minute ventilation, etc).
 * Displays real-time graphs on the screen to show an immediate history of sensor data.
 
 ## Development features
@@ -59,26 +59,44 @@ nor will it be accepted as a pull request.
 ![Therapy mode menu on an unlocked Airsense 10 CPAP machine](images/airsense-modes.jpg)
 
 The Airsense 10 that we have modified is a low cost sleep therapy device
-that provides a *Constant* air pressure to help with sleep apnea and
-other disorders.  Adding a homebrew function to the existing firmware
-that alternate between pressures with a configurable delay allows the
-CPAP to effectively function as a Pressure Control Ventilator (PCV) for sedated
-patients.  The BiPAP machines can also produce two levels of pressure and
-they also have the ability to synchronize with the patient's breathing,
-which allows them to be used a temporary ventilators for non-sedated
-patients.
+that provides a *Constant* Positive Air Pressure to help with sleep apnea and
+other disorders.  This CPAP mode applies constant pressure to the lungs,
+but it does not ventilate, or let air move in and out of the lungs.
 
-However, the CPAP machines have many of the same sensors as the more
-expensive models. And the Airsense 10 CPAP devices include in their
-firmware all of the other modes, such as iVAPS and BiPAP-ST. Setting
-the configuration bits to enable the vendor's BiPAP mode on the CPAP
-machines appears to work; the user's respiration rate is detected and the
-backup respiration rate takes over if they stop breathing.  This indicates
-that the CPAP machines should only require software modifications to perform
-the same functions.  Further customization for clinical use is possible by writing
-[new extensions](info/extensions.md) for the firmware in the machine.
+The BiPAP machines are more capable devices to treat sleep apnea
+and COPD that provide *Bi-level* Positive Airway Pressure.  Bi-level
+pressure *triggers* on patient breaths, applying higher pressure when
+the patient tries to breathe in, and a lower pressure when the patient
+tries to exhale.  This is what's called a *support* mode, which provides
+additional pressure support to a patient's natural breathing.
+
+These differences apply to the devices as they function **out of the box**.
+Our work indicates that the actual difference between a low-end
+CPAP device and a high-end iVAPS device is just a **software upgrade**.
+The CPAP machines have many of the same sensors as the more
+expensive models, and the Airsense 10 CPAP devices include in their
+firmware all of the other modes, such as iVAPS and BiPAP-ST.
+When we unlock that mode in software, the CPAP device functions like a
+much more capable and expensive iVAPS device.
+
+This idea, that the difference between CPAP and BiPAP machines is a
+*software* change rather than a *hardware* change, is at the root of
+our work.  If the common, highly distributed CPAP devices could have a
+software upgrade that turns them into iVAPS or BiPAP-ST devices capable
+of ventilating COVID patients, that would be a huge boon to the hospitals
+and health care workers around the world who are struggling with a lack
+of ventilators or alternatives to treat the influx of COVID patients.
+
+Adding a homebrew function to the existing firmware that alternate
+between pressures with a configurable delay allows the CPAP to effectively
+function as a Pressure Control Ventilator (PCV) for sedated patients.
+Enabling the vendor provided iVAPS mode,
+along with [further customization and new extensions](info/extensions),
+should make the devices even more flexible and suitable for clinical use.
+
 
 ## Can jailbroken CPAP devices be used to treat COVID patients?
+
 We want to be very clear here: this modified firmware should **not** be
 flashed on CPAP machines and used to treat COVID patients immediately.
 The firmware that we've developed is an effective demonstration of
