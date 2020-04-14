@@ -2,7 +2,7 @@ site_name: airbreak
 repo_url: https://github.com/osresearch/airbreak/
 edit_uri: ""
 theme:
-  name: flatly
+  name: cyborg
   custom_dir: docs/custom/
 markdown_extensions:
         - admonition
