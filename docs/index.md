@@ -39,30 +39,64 @@ No IP belonging to device manufacturers is hosted in this repository,
 nor will it be accepted as a pull request.
 
 ## Major features
-* Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control)
-* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is 20cm H<sub>2</sub>O)
-* Allows smooth rapid pressure change rates (stock firmware changes pressure at less than 1 cm/sec)
-* Unlocks all of the vendor modes and tunable configuration parameters
-* Provides access to all of the sensors (flow, pressure, temperature, etc)
-* Displays real-time graphs on the screen to show an immediate history of sensor data
+* Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control).
+* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is limited to 20cm H<sub>2</sub>O).
+* Allows smooth rapid pressure change rates for respiration rates up to 30 breaths per minute (stock firmware changes pressure at less than 1 cm/sec).
+* Unlocks all of the vendor modes and tunable configuration parameters, including ST and iVAPS modes present in the firmware.
+* Provides access to all of the sensors (flow, pressure, temperature, tidal volume, minute ventilation, etc).
+* Displays real-time graphs on the screen to show an immediate history of sensor data.
 
 ## Development features
-* Closed loop air pressure control with backup respiration rates ("VAPS" mode)
-* Visual and audible alarms when flow stoppage or leakage rates are detected
-* GPIO interface with other systems
-* Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435)
+* Visual and audible alarms when flow stoppage or leakage rates are detected.
+* Closed loop air volume control with backup respiration rates and supplemental O<sub>2</sub>.
+* GPIO interface with other systems.
+* Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435).
 
 # FAQ
 
 ## What's the difference between the CPAP and BiPAP machines?
-The Airsense 10 that we have modified is a low cost sleep therapy device that
-provides a *Constant* air pressure to help with sleep apnea and other disorders.
-The BiPAP machines can produce two levels of pressure, which allows them to
-be used a temporary ventilators.  Adding a function to the existing firmware
-that alternate between pressures allows the CPAP to effectively function
-similar to a BiPAP system.
+
+![Therapy mode menu on an unlocked Airsense 10 CPAP machine](images/airsense-modes.jpg)
+
+The Airsense 10 that we have modified is a low cost sleep therapy device
+that provides a *Constant* Positive Air Pressure to help with sleep apnea and
+other disorders.  This CPAP mode applies constant pressure to the lungs,
+but it does not ventilate, or let air move in and out of the lungs.
+
+The BiPAP machines are more capable devices to treat sleep apnea
+and COPD that provide *Bi-level* Positive Airway Pressure.  Bi-level
+pressure *triggers* on patient breaths, applying higher pressure when
+the patient tries to breathe in, and a lower pressure when the patient
+tries to exhale.  This is what's called a *support* mode, which provides
+additional pressure support to a patient's natural breathing.
+
+These differences apply to the devices as they function **out of the box**.
+Our work indicates that the actual difference between a low-end
+CPAP device and a high-end iVAPS device is just a **software upgrade**.
+The CPAP machines have many of the same sensors as the more
+expensive models, and the Airsense 10 CPAP devices include in their
+firmware all of the other modes, such as iVAPS and BiPAP-ST.
+When we unlock that mode in software, the CPAP device functions like a
+much more capable and expensive iVAPS device.
+
+This idea, that the difference between CPAP and BiPAP machines is a
+*software* change rather than a *hardware* change, is at the root of
+our work.  If the common, highly distributed CPAP devices could have a
+software upgrade that turns them into iVAPS or BiPAP-ST devices capable
+of ventilating COVID patients, that would be a huge boon to the hospitals
+and health care workers around the world who are struggling with a lack
+of ventilators or alternatives to treat the influx of COVID patients.
+
+Adding a homebrew function to the existing firmware that alternate
+between pressures with a configurable delay allows the CPAP to effectively
+function as a Pressure Control Ventilator (PCV) for sedated patients.
+Enabling the vendor provided iVAPS mode,
+along with [further customization and new extensions](info/extensions),
+should make the devices even more flexible and suitable for clinical use.
+
 
 ## Can jailbroken CPAP devices be used to treat COVID patients?
+
 We want to be very clear here: this modified firmware should **not** be
 flashed on CPAP machines and used to treat COVID patients immediately.
 The firmware that we've developed is an effective demonstration of
@@ -84,6 +118,8 @@ low-resource hospitals who are still waiting for the hospital ventilators
 to arrive.
 
 ## Could homebrew firmware go through FDA approval?
+![Airsense 10 CPAP machine with iVAPS configuration menu](images/airsense-ivaps.jpg)
+
 If there were no other option, our firmware could go through FDA approval,
 but we believe that the best route for rolling out these upgrades is
 to work with the manufacturers to use their resources to validate and
@@ -108,7 +144,7 @@ the manufacturer has access to the source code, to the schematics,
 and to the engineers who are intimately familiar with physiology and
 safety standards.  We've found that, in many cases, the bulk of the
 work has already gone through FDA approval, like the iVAPS menu that
-is in the firmware on the ResMed Airsense device.  Even if other
+is in the firmware on the ResMed Airsense device show above.  Even if other
 manufacturers had not written a line of code for their CPAP models, the
 simple pressure-control ventilator mode that we were able to implement
 is very simple to develop, is designed to work on every CPAP device in

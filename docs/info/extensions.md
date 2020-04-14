@@ -3,10 +3,18 @@
 
 # Writing extensions
 
-To be written.  Similar to [Magic Lantern](https://magiclantern.fm), since we use the
+There are currently two example extensions: [`breath.c`](https://github.com/osresearch/airbreak/blob/master/breath.c) and [`graph.c`](https://github.com/osresearch/airbreak/blob/master/graph.c).
+The breathing mod implements a Pressure Control Ventilator with programmable
+pressure and respiration rate.  The graphing mod adds a strip chart for the
+current commanded pressure and the actual output pressure.
+
+This is similar to [Magic Lantern](https://magiclantern.fm), since we use the
 existing vendor firmware as a library with functions at fixed addresses and fit into
 the empty space around the flash image.  The Ghidra XML file can be converted into
 the `stubs.S` that provides labels at the fixed locations.
+
+More documentation needs to be written.
+
 
 Ghidra files.
 
