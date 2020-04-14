@@ -1,4 +1,4 @@
-# Clincal Evaluation
+# Clinical Evaluation
 
 <!--
 To be written.  Currently the modified firmware is being evaluated by

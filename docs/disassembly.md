@@ -3,7 +3,7 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
 
 
-In order to dump and replace the device firmware, we need to access the programming port. Unforunately it is inside the machine so it requires some disassembly to reach.
+In order to dump and replace the device firmware, we need to access the programming port. Unfortunately it is inside the machine so it requires some disassembly to reach.
 
 ### Tools
 
@@ -46,7 +46,7 @@ that attach to the board.  For higher throughput flashing the
 is easier to hookup, but requires someone to hold it in place while the
 device is reflashed with custom firmware.  The pinout of this port is not
 the usual 10-pin ARM debug header; it combines the programming pins for
-the STM32 that is the main controller, the auxillary STM8, and the PMIC.
+the STM32 that is the main controller, the auxiliary STM8, and the power watchdog IC.
 
 Board footprint layout (you don't need this unless you're soldering to
 the board):
@@ -96,7 +96,7 @@ STlink-V2 pinout:
 !!! Warning
 	A genuine ST-Link programmer uses the STM32_VDD pin to detect the target voltage, not to provide power. Connecting a generic programmer or a Raspberry Pi with this pin configuration will cause the programmer to be back-powered through the AirSense PCB.
 
-	**If you are using a SWD programmer other than the ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
+	**If you are using a SWD programmer other than a genuine ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
 
 
 Okay, now you're ready to [flash the firmware!](firmware.md)

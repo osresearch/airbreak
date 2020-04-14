@@ -16,7 +16,7 @@ nav:
                 - Evaluation: 'evaluation.md'
         - Information:
                 - Hardware:
-                        - Datasheets: 'info/datasheets.md'
+                        - Airsense S10 Hardware: 'info/hardware.md'
                         - Pinouts: 'info/pinouts.md'
                         - Useful Test Points: 'info/testpoints.md'
                 - Software:
