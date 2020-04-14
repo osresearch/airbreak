@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/ventilator-animated.gif)
-# Airbreak: jailbreak your CPAP devices
+# Jailbreak your CPAP machine with Airbreak
 
 In light of the COVID-19 crisis and resultant
 shortage of medical equipment, [hospitals have developed protocols for
@@ -39,8 +39,8 @@ No IP belonging to device manufacturers is hosted in this repository,
 nor will it be accepted as a pull request.
 
 ## Major features
-* Adds a timed breathing mode that oscillates between high and low pressure (stock firmware supports only a single pressure)
-* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O (stock firmware is 20cm H<sub>2</sub>O)
+* Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control)
+* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is 20cm H<sub>2</sub>O)
 * Allows smooth rapid pressure change rates (stock firmware changes pressure at less than 1 cm/sec)
 * Unlocks all of the vendor modes and tunable configuration parameters
 * Provides access to all of the sensors (flow, pressure, temperature, etc)
@@ -66,8 +66,8 @@ similar to a BiPAP system.
 We want to be very clear here: this modified firmware should **not** be
 flashed on CPAP machines and used to treat COVID patients immediately.
 The firmware that we've developed is an effective demonstration of
-the capability, and while it has been reviewed and validated by expert
-researchers, biomedical engineers, and clinical pulmonologists, it has
+the capability, and while it has been [reviewed and validated by expert
+researchers, biomedical engineers, and clinical pulmonologists](evaluation), it has
 not yet been put through FDA approval.  Additionally, the
 [Mt Sinai's protocols for off-label non-invasive ventilation](https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf)
 require additional modifications such as viral filter and remote control
@@ -116,8 +116,8 @@ existence, and would be a very low technology and regulatory barrier
 for manufacturers who have the right people and resources.
 
 * The third is related to making these jailbreaks at scale:  We could take
-in every unused CPAP device in the country, [unscrew the case and
-re-flash the firmware](Installation).  It's slow and expensive but could
+in every unused CPAP device in the country, [unscrew the case](disassembly)
+and [re-flash the firmware](firmware).  It's slow and expensive but could
 be solved with lots and lots of people.  The thing is, of the 8 million
 CPAPs in the country, almost all 5 million shipped over the last 3 years
 have a cellular IoT connection that is always on, reporting back usage
@@ -144,32 +144,20 @@ FDA approval under the Emergency Use Authorization if the manufacturers
 absolutely refused to cooperate, but the safest and best path is for
 the manufacturers to enable this upgrade on their own.
 
-Separately from the very pressing COVID issues, this sort of tool allows
-device owners to write their own [extensions to customize
-their devices for their needs](info/extensions), similar to what
-the [Magic Lantern](https://magiclantern.fm) firmware does for cameras.
-Additionally, these tools allow the owners and users to gain
-a better understand their own therapy by gaining
-access to the sensors on the device.  They can add features like the on-screen
-graphs shown above, or integrate external systems through the expansion port.
-
-# Clincal Evaluation
-
-![PV curves](images/pv.png)
-
-To be written.  Currently the modified firmware is being evaluated by
-research labs and pulmnologists.  There are other pieces necessary to
-use the devices in a clinical setting, such as virus filters, O2 inputs,
-remote access consoles, alarms, etc.
-
-<!--
-[Mt Sinai's BiPAP protocols for non-invasive ventilation](https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf)
-provide a roadmap for how these modified CPAP devices could be used.
--->
+Separately from the very pressing COVID issues, Airbreak allows
+CPAP device owners to write their own [extensions to customize their
+devices for their needs](info/extensions), similar to what the [Magic
+Lantern](https://magiclantern.fm) firmware does for cameras.  They can
+add features like the on-screen graphs shown above, or integrate external
+systems through the expansion port.  Additionally, these tools allow
+the owners and users to gain a better understand their own therapy by
+gaining access to the sensors on the device.
 
 # More details
 
-* [Installation guide](/disassembly)
+* [Clinical evaluation](evaluation)
+* [Disassembly and wiring instructions](/disassembly)
+* [Firmware flashing guide](/firmware)
 * [Writing extensions](info/extensions)
 * [github.com/osresearch/airbreak](https://github.com/osresearch/airbreak)
 * [info@airbreak.dev](mailto://info@airbreak.dev)

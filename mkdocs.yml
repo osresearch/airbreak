@@ -4,13 +4,16 @@ edit_uri: ""
 theme:
   name: flatly
   custom_dir: docs/custom/
+extra_css: [extra.css]
 markdown_extensions:
         - admonition
+site_favicon: favicon.ico
 nav:
         - Guide:
                 - About: 'index.md'
                 - Disassembly: 'disassembly.md'
                 - Firmware: 'firmware.md'
+                - Evaluation: 'evaluation.md'
         - Information:
                 - Hardware:
                         - Airsense S10 Hardware: 'info/hardware.md'
