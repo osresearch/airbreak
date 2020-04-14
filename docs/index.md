@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/ventilator-animated.gif)
-# Airbreak: jailbreak your CPAP devices
+# Jailbreak your CPAP machine with Airbreak
 
 In light of the COVID-19 crisis and resultant
 shortage of medical equipment, [hospitals have developed protocols for
@@ -116,8 +116,8 @@ existence, and would be a very low technology and regulatory barrier
 for manufacturers who have the right people and resources.
 
 * The third is related to making these jailbreaks at scale:  We could take
-in every unused CPAP device in the country, [unscrew the case and
-re-flash the firmware](Installation).  It's slow and expensive but could
+in every unused CPAP device in the country, [unscrew the case](disassembly)
+and [re-flash the firmware](firmware).  It's slow and expensive but could
 be solved with lots and lots of people.  The thing is, of the 8 million
 CPAPs in the country, almost all 5 million shipped over the last 3 years
 have a cellular IoT connection that is always on, reporting back usage
@@ -144,14 +144,14 @@ FDA approval under the Emergency Use Authorization if the manufacturers
 absolutely refused to cooperate, but the safest and best path is for
 the manufacturers to enable this upgrade on their own.
 
-Separately from the very pressing COVID issues, this sort of tool allows
-device owners to write their own [extensions to customize
-their devices for their needs](info/extensions), similar to what
-the [Magic Lantern](https://magiclantern.fm) firmware does for cameras.
-Additionally, these tools allow the owners and users to gain
-a better understand their own therapy by gaining
-access to the sensors on the device.  They can add features like the on-screen
-graphs shown above, or integrate external systems through the expansion port.
+Separately from the very pressing COVID issues, Airbreak allows
+CPAP device owners to write their own [extensions to customize their
+devices for their needs](info/extensions), similar to what the [Magic
+Lantern](https://magiclantern.fm) firmware does for cameras.  They can
+add features like the on-screen graphs shown above, or integrate external
+systems through the expansion port.  Additionally, these tools allow
+the owners and users to gain a better understand their own therapy by
+gaining access to the sensors on the device.
 
 # More details
 
