@@ -193,7 +193,7 @@ gaining access to the sensors on the device.
 
 ## More details
 
-* [Clinical evaluation](evaluation)
+* [Laboratory evaluation](evaluation)
 * [Disassembly and wiring instructions](/disassembly)
 * [Firmware flashing guide](/firmware)
 * [Writing extensions](info/extensions)

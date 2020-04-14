@@ -1,4 +1,4 @@
-# Clinical Evaluation
+# Laboratory Evaluation
 
 <!--
 To be written.  Currently the modified firmware is being evaluated by
@@ -14,6 +14,8 @@ have criteria that should be met before this sort of modification can be deploye
 Does running the pump at 30 cm H<sub>2</sub>O cause a reduction in the
 life of the machine?
 -->
+
+## Setup
 
 ![Figure 1: Experimental setup](images/evaluation-setup.jpg)
 
@@ -38,6 +40,8 @@ stuffing until physiologic resistance was achieved.  Resistance and
 compliance were calculated from the measured pressure volume loop.
 Resistance was measured to be around 13.4 cmH2O/L/s and compliance was
 measured to be 35.7 ml/cmH2O.   The test set-up is pictured in figure 1.
+
+## Results
 
 ![Figure 2: PV curves](images/pv.png)
 
