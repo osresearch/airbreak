@@ -10,7 +10,7 @@ markdown_extensions:
 site_favicon: favicon.ico
 nav:
         - Guide:
-                - About: 'index.md'
+                - Airbreak Overview: 'index.md'
                 - Disassembly: 'disassembly.md'
                 - Firmware: 'firmware.md'
                 - Evaluation: 'evaluation.md'

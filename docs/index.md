@@ -39,37 +39,43 @@ No IP belonging to device manufacturers is hosted in this repository,
 nor will it be accepted as a pull request.
 
 ## Major features
-* Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control)
-* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is 20cm H<sub>2</sub>O)
-* Allows smooth rapid pressure change rates (stock firmware changes pressure at less than 1 cm/sec)
-* Unlocks all of the vendor modes and tunable configuration parameters
-* Provides access to all of the sensors (flow, pressure, temperature, etc)
-* Displays real-time graphs on the screen to show an immediate history of sensor data
+* Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control).
+* Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is limited to 20cm H<sub>2</sub>O).
+* Allows smooth rapid pressure change rates for respiration rates up to 30 breaths per minute (stock firmware changes pressure at less than 1 cm/sec).
+* Unlocks all of the vendor modes and tunable configuration parameters, including ST and iVAPS modes present in the firmware.
+* Provides access to all of the sensors (flow, pressure, temperature, etc).
+* Displays real-time graphs on the screen to show an immediate history of sensor data.
 
 ## Development features
-* Closed loop air pressure control with backup respiration rates ("VAPS" mode)
-* Visual and audible alarms when flow stoppage or leakage rates are detected
-* GPIO interface with other systems
-* Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435)
+* Visual and audible alarms when flow stoppage or leakage rates are detected.
+* Closed loop air volume control with backup respiration rates and supplemental O<sub>2</sub>.
+* GPIO interface with other systems.
+* Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435).
 
 # FAQ
 
 ## What's the difference between the CPAP and BiPAP machines?
+
+![Therapy mode menu on an unlocked Airsense 10 CPAP machine](images/airsense-modes.jpg)
+
 The Airsense 10 that we have modified is a low cost sleep therapy device
 that provides a *Constant* air pressure to help with sleep apnea and
 other disorders.  Adding a homebrew function to the existing firmware
 that alternate between pressures with a configurable delay allows the
-CPAP to effectively function as a Pressure Control Ventilator for sedated
+CPAP to effectively function as a Pressure Control Ventilator (PCV) for sedated
 patients.  The BiPAP machines can also produce two levels of pressure and
 they also have the ability to synchronize with the patient's breathing,
 which allows them to be used a temporary ventilators for non-sedated
 patients.
 
-Enabling the vendor's BiPAP mode on the CPAP machines appears to work;
-the respiration rate is detected and the backup respiration rate takes
-over if the user stops breathing.  This indicates that there are sufficient
-sensors in the CPAP machine to perform the same functions as the BiPAP.
-Further customization for clincal use is possible by writing
+However, the CPAP machines have many of the same sensors as the more
+expensive models. And the Airsense 10 CPAP devices include in their
+firmware all of the other modes, such as iVAPS and BiPAP-ST. Setting
+the configuration bits to enable the vendor's BiPAP mode on the CPAP
+machines appears to work; the user's respiration rate is detected and the
+backup respiration rate takes over if they stop breathing.  This indicates
+that the CPAP machines should only require software modifications to perform
+the same functions.  Further customization for clinical use is possible by writing
 [new extensions](info/extensions.md) for the firmware in the machine.
 
 ## Can jailbroken CPAP devices be used to treat COVID patients?
