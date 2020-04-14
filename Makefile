@@ -1,9 +1,9 @@
-all: stm32-breath.bin
+all: stm32-unlocked.bin
 
-stm32-breath.bin: breath.bin
+stm32-unlocked.bin: breath.bin graph.bin
 	./patch-airsense ../cpap/stm32.bin $@
 
-mkdocs:
+serve:
 	mkdocs serve
 deploy:
 	mkdocs gh-deploy
@@ -19,6 +19,12 @@ deploy:
 # be patched into the image.
 breath.elf: breath.o stubs.o
 breath-offset := 0x80bb734
+
+#
+# The graphing is too large to fit directly in the location at 0x8067d2c,
+# so it is in high in the flash and the function pointer is fixed up at 0x80f9c88
+graph.elf: graph.o stubs.o
+graph-offset := 0x80fd000
 
 # If there is a new version of the ghidra XML, the stubs.S
 # file will be regenerated so that the addresses and functions

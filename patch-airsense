@@ -42,10 +42,17 @@ patch_code() {
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 0) ))
 
 	if [ -r breath.bin ] ; then
-		cat breath.bin | patch 0xbb734 \ || die "binary patch failed"
+		echo "Including breath.bin"
+		cat breath.bin | patch 0xbb734 || die "binary patch failed"
 	else
 		die "breath.bin not found, did you run make?"
 	fi 
+
+	if [ -r graph.bin ]; then
+		echo "Including graph.bin"
+		cat graph.bin | patch 0xfd000 || die "graph patch failed"
+		printf '\x01\xd0\x0f\x08' | patch 0xf9c88 || die "graph fixup failed"
+	fi
 }
 
 unlock_ui_limits() {
