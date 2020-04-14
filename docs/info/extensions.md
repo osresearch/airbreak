@@ -21,3 +21,6 @@ with the library.
 
 GPIO library is the STM32 Standard Peripheral Library.
 
+There is a hard-float unit in the CPU, but some float/double ops seem
+to cause a fault.  Be sure that all of your constants have an explicit
+float type like `0.1f`, otherwise gcc will use doubles.

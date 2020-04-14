@@ -20,6 +20,12 @@ binary file into the firmware.
 
 # Helpful GDB commands:
 
+Start `gdb`, connect to the OpenOCD server and disassemble the current address:
+```
+gdb-multiarch -iex 'target remote localhost:3333'
+display/i $pc
+```
+
 Reboot the device and halt before running any code:
 ```
 mon reset halt
@@ -27,7 +33,7 @@ mon reset halt
 
 Unlock the STM32 and flash the new firmware into it:
 ```
-mon stm32f2x options_write 0 0x2c ; reset halt ;  flash write_image erase stm32-breath.bin 0x8000000
+mon stm32f2x options_write 0 0x2c ; reset halt ;  flash write_image erase stm32-unlocked.bin 0x8000000
 ```
 
 Read the Therapy Manager floating point variables, or a specific one like the target
