@@ -33,7 +33,7 @@ While we are consulting with doctors to validate that the modified
 firmware works as intended, the codebase in its current form should
 be considered a **proof of concept** and is
 **not intended for use in a life-support capacity**.
-Additional equipment like viral filters are also required.
+Additional equipment like viral filters is also required.
 Please see the [FAQ](#faq) for more information.
 
 No IP belonging to device manufacturers is hosted in this repository,

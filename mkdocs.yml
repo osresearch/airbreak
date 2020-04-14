@@ -2,11 +2,18 @@ site_name: airbreak
 repo_url: https://github.com/osresearch/airbreak/
 edit_uri: ""
 theme:
-  name: flatly
+  name: material
   custom_dir: docs/custom/
+  logo: images/logo.png
+  palette:
+    primary: indigo
+    accent: purple
 extra_css: [extra.css]
 markdown_extensions:
         - admonition
+plugins:
+  - search # necessary for search to work
+  - git-revision-date-localized
 site_favicon: favicon.ico
 nav:
         - Guide:
