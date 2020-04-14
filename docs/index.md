@@ -53,9 +53,9 @@ nor will it be accepted as a pull request.
 * GPIO interface with other systems.
 * Display statistics in conformance with [Rapidly Manufactured Ventilator Standards](https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435).
 
-# FAQ
+## FAQ
 
-## What's the difference between CPAP and BiPAP machines?
+### What's the difference between CPAP and BiPAP machines?
 
 ![Therapy mode menu on an unlocked Airsense 10 CPAP machine](images/airsense-modes.jpg)
 
@@ -96,7 +96,7 @@ along with [further customization and new extensions](info/extensions),
 should make the devices even more flexible and suitable for clinical use.
 
 
-## Can jailbroken CPAP devices be used to treat COVID patients?
+### Can jailbroken CPAP devices be used to treat COVID patients?
 
 We want to be very clear here: this modified firmware should **not** be
 flashed on CPAP machines and used to treat COVID patients immediately.
@@ -108,7 +108,7 @@ not yet been put through FDA approval.  Additionally, the
 require additional modifications such as viral filter and remote control
 before the machines would be ready for clinical use.
 
-## Could hacked machines alleviate the shortage of ventilators?
+### Could hacked machines alleviate the shortage of ventilators?
 If the manufacturers developed their own firmware updates, or the FDA
 approves our jailbroken firmware, this could have an extremely large role
 in bridging the ventilator shortage gap.
@@ -118,7 +118,7 @@ the country.  These devices can be used as an alternate ventilator, for
 low-resource hospitals who are still waiting for the hospital ventilators
 to arrive.
 
-## Could homebrew firmware go through FDA approval?
+### Could homebrew firmware go through FDA approval?
 ![Airsense 10 CPAP machine with iVAPS configuration menu](images/airsense-ivaps.jpg)
 
 If there were no other option, our firmware could go through FDA approval,
@@ -165,7 +165,7 @@ This is a big deal -- it means that they can selectively upgrade, by
 serial number, specific units to function as ventilators, without having
 to open them up -- it can all work over the air.
 
-## So what's the point?
+### So what's the point?
 ![Onscreen graphs](images/sprintf.jpg)
 
 What our firmware does is show that it is possible to re-program these
@@ -190,7 +190,8 @@ systems through the expansion port.  Additionally, these tools allow
 the owners and users to gain a better understand their own therapy by
 gaining access to the sensors on the device.
 
-# More details
+
+## More details
 
 * [Clinical evaluation](evaluation)
 * [Disassembly and wiring instructions](/disassembly)

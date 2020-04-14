@@ -91,7 +91,7 @@ to immediately be used according to the Mt Sinai BiPAP protocol.
 
 The flashing is a one-time operation.  The programmer can be unplugged and moved to another device.
 
-### Restoring the vendor firmware
+## Restoring the vendor firmware
 
 ![Gears icon](images/gears.png)
 
