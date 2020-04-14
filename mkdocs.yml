@@ -4,6 +4,7 @@ edit_uri: ""
 theme:
   name: cyborg
   custom_dir: docs/custom/
+extra_css: [extra.css]
 markdown_extensions:
         - admonition
 site_favicon: favicon.ico
