@@ -6,6 +6,7 @@ theme:
   custom_dir: docs/custom/
 markdown_extensions:
         - admonition
+site_favicon: favicon.ico
 nav:
         - Guide:
                 - About: 'index.md'
