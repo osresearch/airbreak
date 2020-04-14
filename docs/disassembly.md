@@ -3,7 +3,7 @@
 ![CPAP running custom firmware](images/airsense-hacked.jpg)
 
 
-In order to dump and replace the device firmware, we need to access the programming port. Unforunately it is inside the machine so it requires some disassembly to reach.
+In order to dump and replace the device firmware, we need to access the programming port. Unfortunately it is inside the machine so it requires some disassembly to reach.
 
 ### Tools
 
@@ -46,7 +46,7 @@ that attach to the board.  For higher throughput flashing the
 is easier to hookup, but requires someone to hold it in place while the
 device is reflashed with custom firmware.  The pinout of this port is not
 the usual 10-pin ARM debug header; it combines the programming pins for
-the STM32 that is the main controller, the auxillary STM8, and the PMIC.
+the STM32 that is the main controller, the auxiliary STM8, and the power watchdog IC.
 
 Board footprint layout (you don't need this unless you're soldering to
 the board):

@@ -95,6 +95,10 @@ The flashing is a one-time operation.  The programmer can be unplugged and moved
 
 ![Gears icon](images/gears.png)
 
-Restoring the old firmware is possible; there are some RTC variables that need to be adjusted.
-Script to be provided.
+In order for the vendor firmware to flash properly, it is necessary
+to restore variables to the device's backup memory in a certain sequence.
+The following OpenOCD command will do that:
+```sh
+flash_new stm32.bin
+```
 

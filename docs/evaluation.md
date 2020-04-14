@@ -1,5 +1,5 @@
 ![CPAP running custom firmware](images/ventilator-animated.gif)
-# Clincal Evaluation
+# Clinical Evaluation
 
 ![PV curves](images/pv.png)
 
