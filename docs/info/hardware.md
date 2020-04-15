@@ -22,6 +22,7 @@ Here are some of the components on the AirSense S10 main PCB.
 | Aux uC		| STM8S005 (TQFP48) |  STMicroelectronics | [Datasheet](https://www.st.com/content/ccc/resource/technical/document/datasheet/21/5a/57/8b/f4/49/4a/12/DM00037613.pdf/files/DM00037613.pdf/jcr:content/translations/en.DM00037613.pdf)  | [Reference Manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf)   | 
 | Power watchdog IC	| POWER605  | Lattice | [Datasheet](http://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/ProcessorPM-POWR605DataSheet.pdf)   |
 | Main Pressure Sensor  | NPA-300M-015A | Amphenol | [Datasheet](https://amphenol-sensors.com/en/component/edocman/212-novasensor-npa-surface-mount-pressure-sensors-datasheet/download?Itemid=8429) | Operates in analog mode |
+| Differential Pressure Sensor | SDP8xx | Sensirion | [Datasheet](https://www.sensirion.com/en/about-us/company/technology/cmosens-technology-for-gas-flow/) | Digital mode, manifold mount |
 | Programming Header	| TC2050-IDC | Tag-Connect LLC | [DigiKey](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366) | 
 | Motor Driver | DRV8302 | Texas Instruments | [DigiKey](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366) | 
 | Serial EEPROM | M95M02 | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/m95m02-dr.pdf) | 
