@@ -53,8 +53,6 @@ be exactly 1MB.
 
 ## Building Alternate Firmware
 
-
-## Flashing
 ![Unlocked icon](images/unlocked.png)
 
 In a third terminal window, patch the extracted firmware at
@@ -73,6 +71,8 @@ documentation [here](../info/firmware-docs).
 The script might fail if the hashes of your extracted firmware do not
 match the one that it expects (currently `SX567-0401`). If you have a
 different version, please contact us for how to proceed.
+
+## Flashing
 
 Now reflash the device with the modified firmware by going back to the
 OpenOCD console terminal and running:
@@ -96,7 +96,7 @@ to immediately be used according to the Mt Sinai BiPAP protocol.
 
 The flashing is a one-time operation.  The programmer can be unplugged and moved to another device. Remember to keep a backup of the vendor firmware.
 
-## Restoring the vendor firmware
+## Restoring Vendor Firmware
 
 ![Gears icon](images/gears.png)
 

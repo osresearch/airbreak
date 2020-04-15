@@ -26,4 +26,5 @@ Here are some of the components on the AirSense S10 main PCB.
 | Motor Driver | DRV8302 | Texas Instruments | [DigiKey](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366) | 
 | Serial EEPROM | M95M02 | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/m95m02-dr.pdf) | 
 | LCD | TM024HDZ29 | Tianma | [Similar datasheets](https://www.beyondinfinite.com/product/lcd/tianma_lcd_display.html) | [Closest we could find](https://www.beyondinfinite.com/lcd/Library/Tianma/TM024HDZ73.pdf)
+| Relay Driver | A2550 | Allegro | [Datasheet](https://www.allegromicro.com/~/media/Files/Datasheets/A2550-Datasheet.ashx) | Function unknown; accessory? | 
 
