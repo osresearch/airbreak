@@ -98,5 +98,10 @@ STlink-V2 pinout:
 
 	**If you are using a SWD programmer other than a genuine ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
 
+![Radio and heater connections](images/heatbed-radio.jpg)
+
+Finally, you may wish to disconnect the cellular daughterboard (circled, left) and
+humidifier (circled, right) so that the device does not 'phone home' or attempt
+to heat an empty water tank.
 
 Okay, now you're ready to [flash the firmware!](firmware.md)
