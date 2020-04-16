@@ -19,7 +19,8 @@ What we have done is to "*jailbreak*" the the Airsense 10 CPAP
 machine, a common, low-cost sleep therapy device
 intended to treat sleep apnea, so that it is possible to run additional
 tasks on the device. These new tasks add the features and adjust the range of
-parameters that make it possible to use the device as a temporary ventilator.
+parameters that make it possible, along with extra equipment like viral filters,
+to use the device as a temporary ventilator.
 This can help ease the shortage until more real ventilators are available.
 
 Our changes bring the Airsense S10 to near feature parity with BiPAP
@@ -33,7 +34,8 @@ While we are consulting with doctors to validate that the modified
 firmware works as intended, the codebase in its current form should
 be considered a **proof of concept** and is
 **not intended for use in a life-support capacity**.
-Additional equipment like viral filters is also required.
+Additional equipment like **viral filters** and **monitoring alarms**
+are also required.
 Please see the [FAQ](#faq) for more information.
 
 No IP belonging to device manufacturers is hosted in this repository,
