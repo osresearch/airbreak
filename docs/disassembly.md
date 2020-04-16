@@ -32,7 +32,7 @@ The bottom latches need to be pried open with a flat head or a spudger.
 ![Removing the knob](images/airsense-knob.jpg)
 
 The knob needs to be pulled firmly straight away from the board to remove it, which will allow
-the gasket to be removed.  Be careful while popping it off the start button on the top of the device.
+the gasket to be removed.  This can be done from the front-side by popping the latches at the bottom (which are accessible), then squeezing the two latches inward on the left and right-side of the gasket around the middle.  Be careful while popping it off the start button on the top of the device (see components list for the part number if replacement needed).
 It is not necessary to remove the circuit board from the device.
 
 ## Wiring
@@ -53,11 +53,15 @@ the board):
 
 | Function 		| Pin | Pin | Function |
 | ---			| --- | --- | --- |
-| `STM32_VDD`		| 1 (square) | 2 | `STM32_NRST` |
-| `STM32_SWDIO`		| 3   | 4   | `STM8_SWIM` |
-| `STM8_VDD`		| 5   | 6   | `PMIC_TDI` |
-| `STM32_SWCLK`		| 7   | 8   | `STM8_TLI` |
-| `GND`			| 9   | 10  | `PMIC_TDO` |
+| `STM32_VDD`		| 1 (square) | 10 | `STM32_NRST` |
+| `STM32_SWDIO`		| 2   | 9   | `STM8_SWIM` |
+| `STM8_VDD`		| 3   | 8   | `PMIC_TDI` |
+| `STM32_SWCLK`		| 4   | 7   | `STM8_NRST` |
+| `GND`			| 5   | 6  | `PMIC_TDO` |
+
+NOTE1: This follows the TC2050 pinout scheme, which is similar to "IC" pinouts (down one side, up the other).
+
+NOTE2: The PMIC also shares some of the data pins.
 
 ![Connecting the TC-2050 to the STlink2](images/airsense-stlink.jpg)
 
@@ -72,11 +76,11 @@ TC2050 ribbon cable pinout:
 
 | Function 		| Pin | Pin | Function |
 | ---			| --- | --- | --- |
-| **`STM32_VDD`**	| 1 (red) | 3 | **`STM32_SWDIO`** |
-| `STM8_VDD`		| 5   | 7   | **`STM32_SWCLK`** |
-| **`GND`**		| 9   | 10  | `PMIC_TDO` |
-| `STM8_TLI`		| 8   | 6   | `PMIC_TDI` |
-| `STM8_SWIM`		| 4   | 2   | **`STM32_NRST`** |
+| **`STM32_VDD`**	| 1 (red) | 2 | **`STM32_SWDIO`** |
+| `STM8_VDD`		| 3   | 4   | **`STM32_SWCLK`** |
+| **`GND`**		| 5   | 6  | `PMIC_TDO` |
+| `STM8_NRST`		| 7   | 8   | `PMIC_TDI` |
+| `STM8_SWIM`		| 9   | 10   | **`STM32_NRST`** |
 
 STlink-V2 pinout:
 
@@ -97,6 +101,9 @@ STlink-V2 pinout:
 	A genuine ST-Link programmer uses the STM32_VDD pin to detect the target voltage, not to provide power. Connecting a generic programmer or a Raspberry Pi with this pin configuration will cause the programmer to be back-powered through the AirSense PCB.
 
 	**If you are using a SWD programmer other than a genuine ST-Link, do not hook up STM32_VDD to your 3.3V pin or you may risk damaging your board, programmer, or both!**
+
+The following image shows the connections with the typcal low-cost ST-Link (note no VCC!).
+![Connect the TC-2050 to a Fake STLink2](images/tc2050_fakestlink.jpg)
 
 ![Radio and heater connections](images/heatbed-radio.jpg)
 
