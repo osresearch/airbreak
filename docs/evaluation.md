@@ -31,8 +31,8 @@ in accordance with the
 Air flow rate and pressure
 were measured using Honeywell pressure chips and a National Instruments
 data acquisition board.  Pressure was sent through a low pass filter and
-calibrated using a standardized, adjustable pressure column at 0, 150
-and 300 cm H<sub>2</sub>O.  Flow waveforms were acquired as a differential pressure
+calibrated using a standardized, adjustable pressure column at 0, 15.0
+and 30.0 cm H<sub>2</sub>O.  Flow waveforms were acquired as a differential pressure
 and calibrated using standard 0.6, 1 and 3 L syringes and integrated to
 calculate tidal volumes using MATLAB.  A tube was filled with polymeric
 stuffing until physiologic resistance was achieved.  Resistance and
