@@ -70,5 +70,6 @@
 | 57			| PG01	|-| SRAM	| 24	| ADDR_11 | 
 | 92			| PG07	|-| Home Button	| 	|  | 
 | 93			| PG08	|-| Power Button	| 	|  | 
+| 127			| PG12	|-| POWR605	| 15    | IN_OUT5 | 
 | 23			| PH00	|-| OSC	| 1	| OSC_IN | 
 | 24			| PH01	|-| OSC	| 2	| OSC_OUT | 
