@@ -54,9 +54,9 @@ the board):
 | Function 		| Pin | Pin | Function |
 | ---			| --- | --- | --- |
 | `STM32_VDD`		| 1 (square) | 10 | `STM32_NRST` |
-| `STM32_SWDIO`		| 2   | 9   | `STM8_SWIM` |
+| `STM32_SWDIO/PMIC_TMS`| 2   | 9   | `STM8_SWIM` |
 | `STM8_VDD`		| 3   | 8   | `PMIC_TDI` |
-| `STM32_SWCLK`		| 4   | 7   | `STM8_NRST` |
+| `STM32_SWCLK/PMIC_TCK`| 4   | 7   | `STM8_NRST` |
 | `GND`			| 5   | 6  | `PMIC_TDO` |
 
 NOTE1: This follows the TC2050 pinout scheme, which is similar to "IC" pinouts (down one side, up the other).
