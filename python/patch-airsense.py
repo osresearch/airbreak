@@ -224,7 +224,13 @@ def gui_config ():
         asf.patch(b'\x07\x00', addr)
 
 def patch_logos():
+
+    #Change these to adjust logos, rest should work automatically.
+    #NB - be sure of settings when saving file:
+    #     'text' was exported with `Compressed, RLE4`
+    #     'logo' was exported with `Compressed, RLE8`
     import image_conversion_example.example1_umbrella_logo_c as logo
+    import image_conversion_example.example1_umbrella_text_c as text
     
     # Find somewhere to stash our stuff in the flash memory
     # NOTE: Pallet is in 32-bit, and need room for struct stuff around pallete
@@ -234,9 +240,7 @@ def patch_logos():
     # Find the location of the original wave
     setting_loc = asf.find_bytes([0xb8, 0x00, 0x54, 0x00, 0xb8, 0x00, 0x00, 0x00])
     
-    asf.patch_image(setting_loc, pallete_addr, pixels_addr, logo)
-
-    import image_conversion_example.example1_umbrella_text_c as text
+    asf.patch_image(setting_loc, pallete_addr, pixels_addr, logo)    
     
     # Find somewhere to stash our stuff in the flash memory
     # NOTE: Pallet is in 32-bit, and need room for struct stuff around pallete
