@@ -3,8 +3,8 @@
 
 Images are stored in a format from emWin. On boot there are two images:
 
-184x84 (LOGO)
-184x50 (TEXT)
+* 184x84 (LOGO)
+* 184x50 (TEXT)
 
 We can easily replace both of them to make it clear this is a modified machine. The following is instructions for doing so.
 
@@ -12,7 +12,7 @@ It's easier to make the images the above sizes, although it should be possible t
 
 # Using BmpCvtDemo
 
-BmpCvtDemo and it's output is freely usable under **non-commercial **purposes. If you will be using this in any commercial manner, you will be required to purchase a license from Segger directly.
+BmpCvtDemo and it's output is freely usable under **non-commercial** purposes. If you will be using this in any commercial manner, you will be required to purchase a license from Segger directly.
 
 Download from [Segger](https://www.segger.com/products/user-interface/emwin/tools/tools-overview/) (registration required) - search on that page for 'Bitmap Converter'.
 
