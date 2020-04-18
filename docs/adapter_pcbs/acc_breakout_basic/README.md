@@ -8,23 +8,25 @@ This board is designed to be millable on a Bantam PCB mill so makes some odd-loo
 
 You can freely send the board away to be made of course too.
 
+**WARNING**: Sanding FR4 material creates dangerous dust. If you need to bevel the edge use appropriate precautions such as sanding under water.
+
 ## PCB Source Format
 
 PCB design files are in Altium Designer source (sorry).
 
 ### Sizes
 
-The card edge dimensions are roughly based on a standard card-edge, see [https://media.digikey.com/pdf/Data%20Sheets/Panasonic%20Electric%20Works%20PDFs/AXC.pdf](https://media.digikey.com/pdf/Data%20Sheets/Panasonic%20Electric%20Works%20PDFs/AXC.pdf "example connector spec that includes PCB sizes").
+The card edge dimensions are roughly based on a standard card-edge, see [example connector spec that includes PCB sizes](https://media.digikey.com/pdf/Data%20Sheets/Panasonic%20Electric%20Works%20PDFs/AXC.pdf).
 
 Board should be 15 mm width (or a little less). The gerber files have a small board outline width to ensure Bantam software gives correct edge size (otherwise may mill on outside edge).
 
-Connectors are on 2.54mm (0.100" grid). Other spacing shown below:
+The connectors are on 2.54mm (0.100" grid). Other spacing shown below:
 
 ![](acc_dims.png)
 
-## Pinout
+## Pinout Notes
 
-See pinout stored in rest of project, the following shows pinout relative to pin numbers marked on main-board part number:
+See pinout stored in rest of project, the following shows pinout of hedaers relative to pin numbers marked on main-board part number:
 
 ![](acc_adapter_render.jpg)
 
