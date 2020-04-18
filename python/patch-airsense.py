@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+# This work was not produced in affiliation with any of the device manufactures and is,
+# and is intended to be, an independent, third-party research project.
+#
+# This work is presented for research and educational purposes only. Any use or reproduction
+# of this work is at your sole risk. The work is provided “as is” and “as available”, and without
+# warranties of any kind, whether express or implied, including, but not limited to, implied
+# warranties of merchantability, non-infringement of third party rights, or fitness for a
+# particular purpose.
+#
+
 import crcmod
 import crcmod.predefined
 import os.path
