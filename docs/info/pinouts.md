@@ -78,20 +78,16 @@
 
 ## Accessory Connector
 
-The accessory connector is a blue edge-connect PCB connector. See the example pcb for the layout of a mating PCB.
+The accessory connector is a blue edge-connect PCB connector. See the example pcb for the layout of a mating PCB. The following table matches the pinout when looking into the side connector:
 
-| Conn Pin #    | Function |
-| ------------- | -------- |
-| 1             |  ?       |
-| 2             | +24V     |
-| 3             |  ?       |
-| 4             |  ?       |
-| 5             |  ?       |
-| 6             |  ?       |
-| 7             | RX (In)  |
-| 8             | GND      |
-| 9             | TX (Out) |
-| 10            |  ?       |
+
+| Pin # | Function |   xxx  |  Pin # | Function  |
+| ----- | -------- | ------ | -----  | --------- |
+|   9   | TX (Out) | ------ |   10   |  ?        |
+|   7   | RX (In)  | ------ |   8    |  GND      |
+|   5   | ?        | ------ |   6    |  ?        |
+|   3   | ?        | ------ |   4    |  ?        |
+|   1   | ?        | ------ |   2    |  +24V     |
 
 ![Photo of Side Connector with Pin Numbering](/docs/images/airsense-side-annotated.jpg)
 
