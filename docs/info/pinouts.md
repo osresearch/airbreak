@@ -93,5 +93,5 @@ The accessory connector is a blue edge-connect PCB connector. See the example pc
 | 9             | TX (Out) |
 | 10            |  ?       |
 
-![](/images/airsense-side-annotated.jpg)
+![Photo of Side Connector with Pin Numbering](/docs/images/airsense-side-annotated.jpg)
 
