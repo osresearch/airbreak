@@ -12,6 +12,7 @@
 | 105			| PA13	|-| Programming Header	| 2	| SWDIO | 
 | 109			| PA14	|-| Programming Header	| 4	| SWCLK | 
 | 110			| PA15	|-| EEPROM	| 1	| ~CS | 
+| 47			| PB01	|-| POWR605     | 5	| VMON4 | 
 | 136			| PB06	|-| LTE header	| 2	| USART1_TX | 
 | 137			| PB07	|-| LTE header	| 3	| USART1_RX | 
 | 139			| PB08	|-| Diff Pressure Sensor	| 	| SCL | 
@@ -71,5 +72,6 @@
 | 92			| PG07	|-| Home Button	| 	|  | 
 | 93			| PG08	|-| Power Button	| 	|  | 
 | 127			| PG12	|-| POWR605	| 15    | IN_OUT5 | 
+| 128			| PG13	|-| POWR605	| 17    | IN_OUT4 | 
 | 23			| PH00	|-| OSC	| 1	| OSC_IN | 
 | 24			| PH01	|-| OSC	| 2	| OSC_OUT | 

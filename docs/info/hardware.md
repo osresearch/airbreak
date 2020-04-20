@@ -12,6 +12,15 @@ includes external and internal schematics and user manuals.
 [The FCC filings for the AirCurve BiPAP](https://fccid.io/2ACHL-A10STA3G),
 currently in use as an emergency ventilator, shows very similar electronics.
 
+## Clinical Manuals
+
+[Clinical manuals](https://www.manualslib.com/brand/resmed/medical-equipment.html)
+for the assisted-breathing devices from this manufacturer provide a great deal
+of insight into the various models in the AirSet and AirCurve lines, as well as
+the ventilation features available in each one.
+Many of the menu options restricted to other models can be enabled by flipping
+configuration bits in the firmware.
+
 ## Components 
 
 Here are some of the components on the AirSense S10 main PCB.
