@@ -1,5 +1,7 @@
 # Pinouts
 
+## STM32
+
 | STM32 Pin#	| GPIO	|-| Peripheral	| Pin	| Function | 
 | ----- 		| ----  |-| -----     | ----  | -----------	| 
 | 34			| PA00	|-| Aux uC	| 47	| WKUP | 
@@ -16,8 +18,8 @@
 | 137			| PB07	|-| LTE header	| 3	| USART1_RX | 
 | 139			| PB08	|-| Diff Pressure Sensor	| 	| SCL | 
 | 140			| PB09	|-| Diff Pressure Sensor	| 	| SDA | 
-| 69			| PB10	|-| Blue edge connector	| 9	| USART3_TX (?) | 
-| 70			| PB11	|-| Blue edge connector	| 7	| USART3_RX (?) | 
+| 69			| PB10	|-| Blue edge connector	| 9	| USART3_TX | 
+| 70			| PB11	|-| Blue edge connector	| 7	| USART3_RX | 
 | 74			| PB13	|-| Motor Driver	| 22	| INL_C | 
 | 75			| PB14	|-| Motor Driver	| 20	| INL_B | 
 | 76			| PB15	|-| Motor Driver	| 18	| INL_A | 
@@ -72,3 +74,24 @@
 | 93			| PG08	|-| Power Button	| 	|  | 
 | 23			| PH00	|-| OSC	| 1	| OSC_IN | 
 | 24			| PH01	|-| OSC	| 2	| OSC_OUT | 
+
+
+## Accessory Connector
+
+The accessory connector is a blue edge-connect PCB connector. See the example pcb for the layout of a mating PCB.
+
+| Conn Pin #    | Function |
+| ------------- | -------- |
+| 1             |  ?       |
+| 2             | +24V     |
+| 3             |  ?       |
+| 4             |  ?       |
+| 5             |  ?       |
+| 6             |  ?       |
+| 7             | RX (In)  |
+| 8             | GND      |
+| 9             | TX (Out) |
+| 10            |  ?       |
+
+![](/images/airsense-side-annotated.jpg)
+

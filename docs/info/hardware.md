@@ -38,15 +38,16 @@ The power watchdog IC (POWR605) is a complicated power watch-dog IC. More than j
 * 16 macrocell PLD logic.
 * 4 timers.
 
-The 6 inputs have fixed thresholds (not programmable) as follows:
-
-* VMON1 = 3.3V
-* VMON2 = 2.5V
-* VMON3 = 1.8V
-* VMON4 = 0.669V
-* VMON5 = 0.669V
-* VMON6 = 0.669V
+The 6 inputs have programmable thresholds (despite what the datasheet implies about fixed).
 
 This device is important as appears to be used as a "safety" on pressure sensors. If pressures are too far out-of-spec it will reset the main STM32F407ZG microcontroller. More reverse engineering is needed to understand the exact connection here.
 
-The POWR605 logic should be reprogrammable via the tag-connect header.
+The POWR605 logic should be reprogrammable via the tag-connect header. The following works (but may not be easiest/lowest-cost):
+
+* "Lattice Diamond" programming software.
+* Programming Cable supported by above (such as HW-USBN-2B).
+* Lattice "PAC-Designer" software.
+
+To read the device, ensure you configure the Lattice Diamond SW to perform a "JEDEC Readback" - the default operation is erase/program/verify. This will then generate a `.jed` file.
+
+From PAC-Designer, create a new project with the POWR605. You can then use the `Import` option to open the `.jed` to see configuration.
