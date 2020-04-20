@@ -15,7 +15,7 @@
 import serial
 import struct
 
-class ASMonitor(object):
+class ASSerialMonitor(object):
     """ Very simple monitor to allow read/write to memory space """
 
     ESC = 0x1B
@@ -92,7 +92,24 @@ class ASMonitor(object):
         
         val = struct.unpack("<f", bytes(cmd[1:5]))
         return val[0]
+
+    def read_mem(self, address):
+        """Read a 4 byte array from address"""
+        cmd = [self.CMD_MEMRD1]
+        cmd += struct.pack("<I", address)
         
+        cmd = self.pack_and_crc(cmd)
+        self._write(cmd)
+        
+        #Read frame
+        cmd = self.read_until_eot()
+        cmd = self.unpack_and_crc(cmd)
+        
+        if cmd[0] != self.RSP_MEMRD1:
+            raise IOError("Out of sync")
+            
+        return cmd[1:5]
+
 
     def open(self, portname):
         """Open a connection to the target device"""
@@ -185,7 +202,7 @@ class ASMonitor(object):
         self.ser.close()
 
 if __name__ == "__main__":
-    AS = ASMonitor()
+    AS = ASSerialMonitor()
     AS.open("COM57")
 
     #AS.write_mem32(0x20001000, 0xEFEF1B1B)
