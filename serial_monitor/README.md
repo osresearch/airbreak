@@ -14,6 +14,12 @@ This is implemented with interrupts. It turns out the units have DMA by default,
 
 Note that the setup is done by replacing one of the functions that processes serial commands. Thus you need to send an "original" command to the device. This is most easily done with `Uv` for example.
 
+## Important Usage Notes
+
+In order to prevent random noise from causing a stream of IRQs, the interrupt kills itself if a configurable number of "bad" messages are seen. This count is basically a running total of characters received without ever seeing a valid CRC8.
+
+The default is 200 (check code to be sure), but once this happens the interrupt is turned off. You may want to disable this or increase that number drastically if using in an environment where you don't want the serial port to easily die.
+
 ## Protocol
 
 The protocol is something like this:
