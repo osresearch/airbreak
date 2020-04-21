@@ -3,8 +3,11 @@
 
 This is the README for the internals of ResMed CPAP jailbreak works;
 for a high-level overview, see [airbreak.dev](https://airbreak.dev).
+The project is [MIT licnsed](LICENSE.txt) and has a [CoC](CODE_OF_CONDUCT.md).
+Please review the [Contributor's Guidelines](CONTRIBUTORS.md) before
+submitting issues or pull requests.
 
-This tree does not contain any files that are copyrighted by ResMed.
+**This tree does not contain any files that are copyrighted by ResMed.**
 You must have a device to extract the firmware from, which is then patched,
 and the modified version is re-flashed.
 
