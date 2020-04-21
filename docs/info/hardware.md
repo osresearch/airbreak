@@ -12,6 +12,15 @@ includes external and internal schematics and user manuals.
 [The FCC filings for the AirCurve BiPAP](https://fccid.io/2ACHL-A10STA3G),
 currently in use as an emergency ventilator, shows very similar electronics.
 
+## Clinical Manuals
+
+[Clinical manuals](https://www.manualslib.com/brand/resmed/medical-equipment.html)
+for the assisted-breathing devices from this manufacturer provide a great deal
+of insight into the various models in the AirSet and AirCurve lines, as well as
+the ventilation features available in each one.
+Many of the menu options restricted to other models can be enabled by flipping
+configuration bits in the firmware.
+
 ## Components 
 
 Here are some of the components on the AirSense S10 main PCB.
@@ -28,6 +37,7 @@ Here are some of the components on the AirSense S10 main PCB.
 | Serial EEPROM | M95M02 | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/m95m02-dr.pdf) | 
 | LCD | TM024HDZ29 | Tianma | [Similar datasheets](https://www.beyondinfinite.com/product/lcd/tianma_lcd_display.html) | [Closest we could find](https://www.beyondinfinite.com/lcd/Library/Tianma/TM024HDZ73.pdf)
 | Relay Driver | A2550 | Allegro | [Datasheet](https://www.allegromicro.com/~/media/Files/Datasheets/A2550-Datasheet.ashx) | Function unknown; accessory? | 
+| Logic Voltage Regulator (x2) | ISL9000A | Renesas | [Datasheet](https://www.mouser.ca/datasheet/2/698/isl9000a-1529533.pdf) | Generates 3.3v and 5v logic voltages | 
 | Top Switch | B3F-3125 | Omrom | [Digikey](https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3F-3125/SW851-ND/368368) | In case switch needs to be replaced (confirmed exact fit).
 
 ## Power Watchdog
