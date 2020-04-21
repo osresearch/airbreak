@@ -9,7 +9,7 @@ In order to dump and replace the device firmware, we need to access the programm
 
 You will need the following:
 
-* Torx T15
+* Torx T10
 * [ST-Link/V2 STM32 programmer](https://www.digikey.com/product-detail/en/stmicroelectronics/ST-LINK-V2/497-10484-ND/2214535) or clone
 * [TC2050-IDC](https://www.digikey.com/product-detail/en/TC2050-IDC/TC2050-IDC-ND/2605366) or [TC2050-ICD-NL](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC-NL/TC2050-IDC-NL-ND/2605367) programming adapter
 * 4 male-female 0.1" jumpers
@@ -19,9 +19,9 @@ You will need the following:
 It is difficult but possible to solder directly to the PCB, which relaxes the requirement for the jumpers and programming adapter. For more information on this, see the [list of useful test points](info/testpoints.md).
 
 
-![Torx T15 screws](images/airsense-screws.jpg)
+![Torx T10 screws](images/airsense-screws.jpg)
 
-First you'll need a Torx T15 driver to remove unscrew the three faceplate screws.
+First you'll need a Torx T10 driver to remove unscrew the four faceplate screws.
 
 <!-- ![Removing the side cover](images/airsense-sidecover.jpg) -->
 
