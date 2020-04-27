@@ -23,8 +23,9 @@ configuration bits in the firmware.
 
 ## Components 
 
-Here are some of the components on the AirSense S10 main PCB.
+Here are some of the components on the AirSense S10 
 
+Main PCB
 | Part  		| Part No. | Manufacturer | Reference | Additional |
 | ---			| --- | --- | --- | --- |
 | Main uC		| STM32F405ZGT6 (LQFP144) | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/stm32f405zg.pdf) | [Reference Manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf) | 
@@ -39,6 +40,18 @@ Here are some of the components on the AirSense S10 main PCB.
 | Relay Driver | A2550 | Allegro | [Datasheet](https://www.allegromicro.com/~/media/Files/Datasheets/A2550-Datasheet.ashx) | Function unknown; accessory? | 
 | Logic Voltage Regulator (x2) | ISL9000A | Renesas | [Datasheet](https://www.mouser.ca/datasheet/2/698/isl9000a-1529533.pdf) | Generates 3.3v and 5v logic voltages | 
 | Top Switch | B3F-3125 | Omrom | [Digikey](https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3F-3125/SW851-ND/368368) | In case switch needs to be replaced (confirmed exact fit).
+
+Cellular Module & Antenna (CAM) Board
+| Part  		| Part No. | Manufacturer | Reference | Additional |
+| ---			| --- | --- | --- | --- |
+| CDMA Radio Module| ce910-dual | Telit | [Datasheet](https://static6.arrow.com/aropdfconversion/1e95506f859937cecfcd3d7fd07cc25d6eab906d/telit_ce910-dual_datasheet.pdf) | [qualcomm qsc1105 chipset](https://fccid.io/RI7CE910-DUAL/Internal-Photos/Internal-Photos-1760716) |
+| 3G Radio Module| HE910-D | Telit | [Datasheet](hhttps://www.telit.com/wp-content/uploads/2017/09/160229_DS_HE910.pdf) | Unkown chipset, [FCC photos obscured] https://fccid.io/RI7HE910/Internal-Photos/Internal-Photos-1654391|
+| 4G Radio Module| cinterion els61-us | Gemalto | [Datasheet](https://www.gemalto.com/brochures-site/download-site/Documents/M2M_ELS61_datasheet.pdf) | Cat 1 LTE w/ 2G/3G fallback | 
+
+Alarm Board (Only A10STACD, A10STA3G, AIR104G)
+| Part  		| Part No. | Manufacturer | Reference | Additional |
+| ---			| --- | --- | --- | --- |
+| Main uC		| R5F21358CNFP | Renesas | [Datasheet](https://4donline.ihs.com/images/VipMasterIC/IC/RNCC/RNCCS11762/RNCCS11762-1.pdf) | [Avnet](https://www.avnet.com/shop/emea/products/renesas-electronics/r5f21358cnfp-30-3074457345629542777/) |
 
 ## Power Watchdog
 
