@@ -258,12 +258,9 @@ class ASFirmwarePatches(object):
             raise IOError("Unknown hash: %s"%self.asf.hash)
             
     def change_text(self):
-        if self.asf.hash == self.known_units[0].hash:
-            asf.patch(b'HACKED!', 0x17500, clobber=True)
-            asf.patch(b'NOT FOR USE\x00', 0x1A540, clobber=True)
-            asf.patch(b'WARNING! WARNING! Ventilator test firmware: Not for humans!\x00', 0x1B860, clobber=True)
-        else:
-            raise IOError("Unknown hash: %s"%self.asf.hash)
+        asf.patch(b'HACKED!', dataseq=b'Home\x00\x00', clobber=True)
+        asf.patch(b'NOT FOR USE\x00', dataseq=b'Are you sure?\x00\x00', clobber=True)
+        asf.patch(b'WARNING! WARNING! Ventilator test firmware: Not for humans!\x00', dataseq=b'Airplane Mode is currently On, do you wish to turn it Off?', clobber=True)
 
     def unlock_ui_limits(self):
         
@@ -288,10 +285,11 @@ class ASFirmwarePatches(object):
         # add more mode entries, set config 0x0 mask to all bits high
         # default is 0x3, which only enables mode 1 (CPAP) and 2 (AutoSet)
         # ---> This is the real magic <---
-        if self.asf.hash == self.known_units[0].hash:
-            self.asf.patch(b'\xff\xff', 0x8590, clobber=True)
-        else:
-            raise IOError("Unknown hash: %s"%self.asf.hash)
+        addr = self.asf.find_bytes(b'\x73\x01\x0c\x00')
+        
+        self.asf.patch(b'\xff\xff', addr + 8, clobber=True)
+
+        #self.known_units[0].hash should result at address 0x8590
 
     def extra_menu(self):
         #try enabling extra menu items
