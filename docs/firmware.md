@@ -14,11 +14,11 @@ First, make sure [this repository](https://github.com/osresearch/airbreak)
 is cloned and located in your working directory.
 
 Make sure your programmer is [attached to the PCB](/disassembly/#wiring),
-then start OpenOCD.  If you are using a programmer other than the STlink, you
+then start OpenOCD.  If you are using a programmer other than the ST-Link/V2, you
 will need to select the correct interface.
 
 ```sh
-sudo openocd -f interface/stlink.cfg -f 'tcl/airsense.cfg'
+sudo openocd -f interface/stlink-v2.cfg -f 'tcl/airsense.cfg'
 ```
 
 If your device is connected properly, you should see a bunch of output, ending with:
