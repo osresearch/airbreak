@@ -1,0 +1,895 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+<meta property="og:title" content="Airbreak: Jailbreak your CPAP machine">
+<meta property="og:description" content="Tools to turn your CPAP device into an emergency ventilator">
+<meta property="og:url" content="https://airbreak.dev/">
+<meta property="og:image" content="https://airbreak.dev/images/sprintf.jpg">
+
+    
+      
+        <title>Airsense S10 Hardware - airbreak</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#airsense-s10-hardware" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="airbreak" class="md-header-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            airbreak
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Airsense S10 Hardware
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="airbreak" class="md-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    airbreak
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Guide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Airbreak Overview" class="md-nav__link">
+      Airbreak Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../disassembly/" title="Disassembly" class="md-nav__link">
+      Disassembly
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../firmware/" title="Firmware" class="md-nav__link">
+      Firmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../evaluation/" title="Evaluation" class="md-nav__link">
+      Evaluation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Information
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Information" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Hardware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Airsense S10 Hardware
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Airsense S10 Hardware" class="md-nav__link md-nav__link--active">
+      Airsense S10 Hardware
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fcc-filings" class="md-nav__link">
+    FCC Filings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-manuals" class="md-nav__link">
+    Clinical Manuals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-watchdog" class="md-nav__link">
+    Power Watchdog
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pinouts/" title="Pinouts" class="md-nav__link">
+      Pinouts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../testpoints/" title="Useful Test Points" class="md-nav__link">
+      Useful Test Points
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Software
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tcl/" title="OpenOCD Scripts" class="md-nav__link">
+      OpenOCD Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../windows/" title="Windows Setup Instructions" class="md-nav__link">
+      Windows Setup Instructions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Firmware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Firmware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Firmware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware-docs/" title="Documentation" class="md-nav__link">
+      Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../extensions/" title="Development" class="md-nav__link">
+      Development
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fcc-filings" class="md-nav__link">
+    FCC Filings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-manuals" class="md-nav__link">
+    Clinical Manuals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-watchdog" class="md-nav__link">
+    Power Watchdog
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="airsense-s10-hardware">Airsense S10 Hardware</h1>
+<p>This page aggregates hardware details about the Airsense S10 electronics
+and other information that may be relevant to the reverse engineering process.</p>
+<h2 id="fcc-filings">FCC Filings</h2>
+<p>One crucial reverse engineering resource is the
+<a href="https://fccid.io/2ACHL-AIR104G">FCC documentation for the AirSense S10</a>, which
+includes external and internal schematics and user manuals.</p>
+<p><a href="https://fccid.io/2ACHL-A10STA3G">The FCC filings for the AirCurve BiPAP</a>,
+currently in use as an emergency ventilator, shows very similar electronics.</p>
+<h2 id="clinical-manuals">Clinical Manuals</h2>
+<p><a href="https://www.manualslib.com/brand/resmed/medical-equipment.html">Clinical manuals</a>
+for the assisted-breathing devices from this manufacturer provide a great deal
+of insight into the various models in the AirSet and AirCurve lines, as well as
+the ventilation features available in each one.
+Many of the menu options restricted to other models can be enabled by flipping
+configuration bits in the firmware.</p>
+<h2 id="components">Components</h2>
+<p>Here are some of the components on the AirSense S10 </p>
+<p>Main PCB</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Part No.</th>
+<th>Manufacturer</th>
+<th>Reference</th>
+<th>Additional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main uC</td>
+<td>STM32F405ZGT6 (LQFP144)</td>
+<td>STMicroelectronics</td>
+<td><a href="https://www.st.com/resource/en/datasheet/stm32f405zg.pdf">Datasheet</a></td>
+<td><a href="https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf">Reference Manual</a></td>
+</tr>
+<tr>
+<td>Aux uC</td>
+<td>STM8S005 (TQFP48)</td>
+<td>STMicroelectronics</td>
+<td><a href="https://www.st.com/content/ccc/resource/technical/document/datasheet/21/5a/57/8b/f4/49/4a/12/DM00037613.pdf/files/DM00037613.pdf/jcr:content/translations/en.DM00037613.pdf">Datasheet</a></td>
+<td><a href="https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf">Reference Manual</a></td>
+</tr>
+<tr>
+<td>Power watchdog IC</td>
+<td>POWR605</td>
+<td>Lattice</td>
+<td><a href="http://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/ProcessorPM-POWR605DataSheet.pdf">Datasheet</a></td>
+<td>Monitors pressures - see notes below</td>
+</tr>
+<tr>
+<td>Main Pressure Sensor</td>
+<td>NPA-300M-015A</td>
+<td>Amphenol</td>
+<td><a href="https://amphenol-sensors.com/en/component/edocman/212-novasensor-npa-surface-mount-pressure-sensors-datasheet/download?Itemid=8429">Datasheet</a></td>
+<td>Operates in analog mode</td>
+</tr>
+<tr>
+<td>Differential Pressure Sensor</td>
+<td>SDP8xx</td>
+<td>Sensirion</td>
+<td><a href="https://www.sensirion.com/en/about-us/company/technology/cmosens-technology-for-gas-flow/">Datasheet</a></td>
+<td>Digital mode, manifold mount</td>
+</tr>
+<tr>
+<td>Programming Header</td>
+<td>TC2050-IDC</td>
+<td>Tag-Connect LLC</td>
+<td><a href="https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366">DigiKey</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Motor Driver</td>
+<td>DRV8302</td>
+<td>Texas Instruments</td>
+<td><a href="https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366">DigiKey</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Serial EEPROM</td>
+<td>M95M02</td>
+<td>STMicroelectronics</td>
+<td><a href="https://www.st.com/resource/en/datasheet/m95m02-dr.pdf">Datasheet</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LCD</td>
+<td>TM024HDZ29</td>
+<td>Tianma</td>
+<td><a href="https://www.beyondinfinite.com/product/lcd/tianma_lcd_display.html">Similar datasheets</a></td>
+<td><a href="https://z3d9b7u8.stackpathcdn.com/pdf-down/T/M/0/TM024HDH30-01-Tianma.pdf">Closest we could find</a></td>
+</tr>
+<tr>
+<td>Relay Driver</td>
+<td>A2550</td>
+<td>Allegro</td>
+<td><a href="https://www.allegromicro.com/~/media/Files/Datasheets/A2550-Datasheet.ashx">Datasheet</a></td>
+<td>Function unknown; accessory?</td>
+</tr>
+<tr>
+<td>Logic Voltage Regulator (x2)</td>
+<td>ISL9000A</td>
+<td>Renesas</td>
+<td><a href="https://www.mouser.ca/datasheet/2/698/isl9000a-1529533.pdf">Datasheet</a></td>
+<td>Generates 3.3v and 5v logic voltages</td>
+</tr>
+<tr>
+<td>Top Switch</td>
+<td>B3F-3125</td>
+<td>Omrom</td>
+<td><a href="https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3F-3125/SW851-ND/368368">Digikey</a></td>
+<td>In case switch needs to be replaced (confirmed exact fit)</td>
+</tr>
+</tbody>
+</table>
+<p>Cellular Module &amp; Antenna (CAM) Board</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Part No.</th>
+<th>Manufacturer</th>
+<th>Reference</th>
+<th>Additional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main uC</td>
+<td>R5F5210ABDFP</td>
+<td>Renesas</td>
+<td><a href="https://www.renesas.com/eu/en/doc/products/mpumcu/doc/rx_family/r01ds0041ej0150_rx210.pdf">Datasheet</a></td>
+<td>LFQFP 100-pin</td>
+</tr>
+<tr>
+<td>CDMA Radio Module</td>
+<td>ce910-dual</td>
+<td>Telit</td>
+<td><a href="https://static6.arrow.com/aropdfconversion/1e95506f859937cecfcd3d7fd07cc25d6eab906d/telit_ce910-dual_datasheet.pdf">Datasheet</a></td>
+<td><a href="https://fccid.io/RI7CE910-DUAL/Internal-Photos/Internal-Photos-1760716">qualcomm qsc1105 chipset</a></td>
+</tr>
+<tr>
+<td>3G Radio Module</td>
+<td>HE910-D</td>
+<td>Telit</td>
+<td><a href="hhttps://www.telit.com/wp-content/uploads/2017/09/160229_DS_HE910.pdf">Datasheet</a></td>
+<td><a href="https://fccid.io/RI7HE910/Internal-Photos/Internal-Photos-1654391">Uknown chipset- FCC photos obscured</a></td>
+</tr>
+<tr>
+<td>4G Radio Module</td>
+<td>cinterion els61-us</td>
+<td>Gemalto</td>
+<td><a href="https://www.gemalto.com/brochures-site/download-site/Documents/M2M_ELS61_datasheet.pdf">Datasheet</a></td>
+<td>Cat 1 LTE w/ 2G/3G fallback</td>
+</tr>
+</tbody>
+</table>
+<p>Alarm Board (Only A10STACD, A10STA3G, AIR104G)</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Part No.</th>
+<th>Manufacturer</th>
+<th>Reference</th>
+<th>Additional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main uC</td>
+<td>R5F21358CNFP</td>
+<td>Renesas</td>
+<td><a href="https://4donline.ihs.com/images/VipMasterIC/IC/RNCC/RNCCS11762/RNCCS11762-1.pdf">Datasheet</a></td>
+<td><a href="https://www.avnet.com/shop/emea/products/renesas-electronics/r5f21358cnfp-30-3074457345629542777/">Avnet</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="power-watchdog">Power Watchdog</h2>
+<p>The power watchdog IC (POWR605) is a complicated power watch-dog IC. More than just a basic device, it contains:</p>
+<ul>
+<li>6 DC power monitoring inputs.</li>
+<li>16 macrocell PLD logic.</li>
+<li>4 timers.</li>
+</ul>
+<p>The 6 inputs have programmable thresholds (despite what the datasheet implies about fixed).</p>
+<p>This device is important as appears to be used as a "safety" on pressure sensors. If pressures are too far out-of-spec it will reset the main STM32F407ZG microcontroller. More reverse engineering is needed to understand the exact connection here.</p>
+<p>The POWR605 logic should be reprogrammable via the tag-connect header. The following works (but may not be easiest/lowest-cost):</p>
+<ul>
+<li>"Lattice Diamond" programming software.</li>
+<li>Programming Cable supported by above (such as HW-USBN-2B).</li>
+<li>Lattice "PAC-Designer" software.</li>
+</ul>
+<p>To read the device, ensure you configure the Lattice Diamond SW to perform a "JEDEC Readback" - the default operation is erase/program/verify. This will then generate a <code>.jed</code> file.</p>
+<p>From PAC-Designer, create a new project with the POWR605. You can then use the <code>Import</code> option to open the <code>.jed</code> to see configuration.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: April 28, 2020
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../evaluation/" title="Evaluation" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Evaluation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../pinouts/" title="Pinouts" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Pinouts
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

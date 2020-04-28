@@ -1,0 +1,1322 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+<meta property="og:title" content="Airbreak: Jailbreak your CPAP machine">
+<meta property="og:description" content="Tools to turn your CPAP device into an emergency ventilator">
+<meta property="og:url" content="https://airbreak.dev/">
+<meta property="og:image" content="https://airbreak.dev/images/sprintf.jpg">
+
+    
+      
+        <title>Pinouts - airbreak</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pinouts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="airbreak" class="md-header-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            airbreak
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Pinouts
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="airbreak" class="md-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    airbreak
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Guide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Airbreak Overview" class="md-nav__link">
+      Airbreak Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../disassembly/" title="Disassembly" class="md-nav__link">
+      Disassembly
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../firmware/" title="Firmware" class="md-nav__link">
+      Firmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../evaluation/" title="Evaluation" class="md-nav__link">
+      Evaluation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Information
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Information" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Hardware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hardware/" title="Airsense S10 Hardware" class="md-nav__link">
+      Airsense S10 Hardware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Pinouts
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Pinouts" class="md-nav__link md-nav__link--active">
+      Pinouts
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stm32" class="md-nav__link">
+    STM32
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessory-connector" class="md-nav__link">
+    Accessory Connector
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../testpoints/" title="Useful Test Points" class="md-nav__link">
+      Useful Test Points
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Software
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tcl/" title="OpenOCD Scripts" class="md-nav__link">
+      OpenOCD Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../windows/" title="Windows Setup Instructions" class="md-nav__link">
+      Windows Setup Instructions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Firmware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Firmware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Firmware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware-docs/" title="Documentation" class="md-nav__link">
+      Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../extensions/" title="Development" class="md-nav__link">
+      Development
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stm32" class="md-nav__link">
+    STM32
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessory-connector" class="md-nav__link">
+    Accessory Connector
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="pinouts">Pinouts</h1>
+<h2 id="stm32">STM32</h2>
+<table>
+<thead>
+<tr>
+<th>STM32 Pin#</th>
+<th>GPIO</th>
+<th>-</th>
+<th>Peripheral</th>
+<th>Pin</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>34</td>
+<td>PA00</td>
+<td>-</td>
+<td>Aux uC</td>
+<td>47</td>
+<td>WKUP</td>
+</tr>
+<tr>
+<td>37</td>
+<td>PA03</td>
+<td>-</td>
+<td>Aux uC</td>
+<td>47</td>
+<td>USART2_RX</td>
+</tr>
+<tr>
+<td>40</td>
+<td>PA04</td>
+<td>-</td>
+<td>1x2 Header</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>PA05</td>
+<td>-</td>
+<td>1x2 Header</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>100</td>
+<td>PA08</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>21</td>
+<td>INH_C</td>
+</tr>
+<tr>
+<td>101</td>
+<td>PA09</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>19</td>
+<td>INH_B</td>
+</tr>
+<tr>
+<td>102</td>
+<td>PA10</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>17</td>
+<td>INH_A</td>
+</tr>
+<tr>
+<td>105</td>
+<td>PA13</td>
+<td>-</td>
+<td>Programming Header</td>
+<td>2</td>
+<td>SWDIO</td>
+</tr>
+<tr>
+<td>109</td>
+<td>PA14</td>
+<td>-</td>
+<td>Programming Header</td>
+<td>4</td>
+<td>SWCLK</td>
+</tr>
+<tr>
+<td>110</td>
+<td>PA15</td>
+<td>-</td>
+<td>EEPROM</td>
+<td>1</td>
+<td>~CS</td>
+</tr>
+<tr>
+<td>47</td>
+<td>PB01</td>
+<td>-</td>
+<td>POWR605</td>
+<td>5</td>
+<td>VMON4</td>
+</tr>
+<tr>
+<td>136</td>
+<td>PB06</td>
+<td>-</td>
+<td>LTE header</td>
+<td>2</td>
+<td>USART1_TX</td>
+</tr>
+<tr>
+<td>137</td>
+<td>PB07</td>
+<td>-</td>
+<td>LTE header</td>
+<td>3</td>
+<td>USART1_RX</td>
+</tr>
+<tr>
+<td>139</td>
+<td>PB08</td>
+<td>-</td>
+<td>Diff Pressure Sensor</td>
+<td></td>
+<td>SCL</td>
+</tr>
+<tr>
+<td>140</td>
+<td>PB09</td>
+<td>-</td>
+<td>Diff Pressure Sensor</td>
+<td></td>
+<td>SDA</td>
+</tr>
+<tr>
+<td>69</td>
+<td>PB10</td>
+<td>-</td>
+<td>Blue edge connector</td>
+<td>9</td>
+<td>USART3_TX</td>
+</tr>
+<tr>
+<td>70</td>
+<td>PB11</td>
+<td>-</td>
+<td>Blue edge connector</td>
+<td>7</td>
+<td>USART3_RX</td>
+</tr>
+<tr>
+<td>74</td>
+<td>PB13</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>22</td>
+<td>INL_C</td>
+</tr>
+<tr>
+<td>75</td>
+<td>PB14</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>20</td>
+<td>INL_B</td>
+</tr>
+<tr>
+<td>76</td>
+<td>PB15</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>18</td>
+<td>INL_A</td>
+</tr>
+<tr>
+<td>44</td>
+<td>PC04</td>
+<td>-</td>
+<td>Pressure Sensor</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>98</td>
+<td>PC08</td>
+<td>-</td>
+<td>SD Card</td>
+<td></td>
+<td>DAT0/D0</td>
+</tr>
+<tr>
+<td>99</td>
+<td>PC09</td>
+<td>-</td>
+<td>SD Card</td>
+<td></td>
+<td>DAT1/IRQ</td>
+</tr>
+<tr>
+<td>111</td>
+<td>PC10</td>
+<td>-</td>
+<td>SD Card</td>
+<td>9</td>
+<td>DAT2/NC</td>
+</tr>
+<tr>
+<td>112</td>
+<td>PC11</td>
+<td>-</td>
+<td>SD Card</td>
+<td>1</td>
+<td>DAT3/~CS</td>
+</tr>
+<tr>
+<td>113</td>
+<td>PC12</td>
+<td>-</td>
+<td>SD Card</td>
+<td>5</td>
+<td>SCK</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PC14</td>
+<td>-</td>
+<td>OSC</td>
+<td></td>
+<td>OSC32_IN</td>
+</tr>
+<tr>
+<td>9</td>
+<td>PC15</td>
+<td>-</td>
+<td>OSC</td>
+<td></td>
+<td>OSC32_OUT</td>
+</tr>
+<tr>
+<td>114</td>
+<td>PD00</td>
+<td>-</td>
+<td>SRAM</td>
+<td>9</td>
+<td>IO_2</td>
+</tr>
+<tr>
+<td>115</td>
+<td>PD01</td>
+<td>-</td>
+<td>SRAM</td>
+<td>10</td>
+<td>IO_3</td>
+</tr>
+<tr>
+<td>116</td>
+<td>PD02</td>
+<td>-</td>
+<td>SD Card</td>
+<td>2</td>
+<td>CMD/DI</td>
+</tr>
+<tr>
+<td>118</td>
+<td>PD04</td>
+<td>-</td>
+<td>SRAM</td>
+<td>41</td>
+<td>~OE</td>
+</tr>
+<tr>
+<td>119</td>
+<td>PD05</td>
+<td>-</td>
+<td>SRAM</td>
+<td>17</td>
+<td>~WE</td>
+</tr>
+<tr>
+<td>77</td>
+<td>PD08</td>
+<td>-</td>
+<td>SRAM</td>
+<td>36</td>
+<td>IO_13</td>
+</tr>
+<tr>
+<td>78</td>
+<td>PD09</td>
+<td>-</td>
+<td>SRAM</td>
+<td>37</td>
+<td>IO_14</td>
+</tr>
+<tr>
+<td>79</td>
+<td>PD10</td>
+<td>-</td>
+<td>SRAM</td>
+<td>38</td>
+<td>IO_15</td>
+</tr>
+<tr>
+<td>80</td>
+<td>PD11</td>
+<td>-</td>
+<td>SRAM</td>
+<td>18</td>
+<td>ADDR_16</td>
+</tr>
+<tr>
+<td>81</td>
+<td>PD12</td>
+<td>-</td>
+<td>SRAM</td>
+<td>23</td>
+<td>NC</td>
+</tr>
+<tr>
+<td>85</td>
+<td>PD14</td>
+<td>-</td>
+<td>SRAM</td>
+<td>7</td>
+<td>IO_0</td>
+</tr>
+<tr>
+<td>86</td>
+<td>PD15</td>
+<td>-</td>
+<td>SRAM</td>
+<td>8</td>
+<td>IO_1</td>
+</tr>
+<tr>
+<td>141</td>
+<td>PE00</td>
+<td>-</td>
+<td>SRAM</td>
+<td>39</td>
+<td>~LB</td>
+</tr>
+<tr>
+<td>142</td>
+<td>PE01</td>
+<td>-</td>
+<td>SRAM</td>
+<td>40</td>
+<td>~UB</td>
+</tr>
+<tr>
+<td>1</td>
+<td>PE02</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>5</td>
+<td>nOCTW</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PE03</td>
+<td>-</td>
+<td>Motor Driver</td>
+<td>6</td>
+<td>nFAULT</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PE04</td>
+<td>-</td>
+<td>LCD</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>PE05</td>
+<td>-</td>
+<td>SD Card</td>
+<td>6 (on board)</td>
+<td>Pulled low when SD card inserted</td>
+</tr>
+<tr>
+<td>58</td>
+<td>PE07</td>
+<td>-</td>
+<td>SRAM</td>
+<td>13</td>
+<td>IO_4</td>
+</tr>
+<tr>
+<td>59</td>
+<td>PE08</td>
+<td>-</td>
+<td>SRAM</td>
+<td>14</td>
+<td>IO_5</td>
+</tr>
+<tr>
+<td>60</td>
+<td>PE09</td>
+<td>-</td>
+<td>SRAM</td>
+<td>15</td>
+<td>IO_6</td>
+</tr>
+<tr>
+<td>63</td>
+<td>PE10</td>
+<td>-</td>
+<td>SRAM</td>
+<td>16</td>
+<td>IO_7</td>
+</tr>
+<tr>
+<td>64</td>
+<td>PE11</td>
+<td>-</td>
+<td>SRAM</td>
+<td>29</td>
+<td>IO_8</td>
+</tr>
+<tr>
+<td>65</td>
+<td>PE12</td>
+<td>-</td>
+<td>SRAM</td>
+<td>30</td>
+<td>IO_9</td>
+</tr>
+<tr>
+<td>66</td>
+<td>PE13</td>
+<td>-</td>
+<td>SRAM</td>
+<td>31</td>
+<td>IO_10</td>
+</tr>
+<tr>
+<td>67</td>
+<td>PE14</td>
+<td>-</td>
+<td>SRAM</td>
+<td>32</td>
+<td>IO_11</td>
+</tr>
+<tr>
+<td>68</td>
+<td>PE15</td>
+<td>-</td>
+<td>SRAM</td>
+<td>35</td>
+<td>IO_12</td>
+</tr>
+<tr>
+<td>10</td>
+<td>PF00</td>
+<td>-</td>
+<td>SRAM</td>
+<td>5</td>
+<td>ADDR_0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>PF01</td>
+<td>-</td>
+<td>SRAM</td>
+<td>4</td>
+<td>ADDR_1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>PF02</td>
+<td>-</td>
+<td>SRAM</td>
+<td>3</td>
+<td>ADDR_2</td>
+</tr>
+<tr>
+<td>13</td>
+<td>PF03</td>
+<td>-</td>
+<td>SRAM</td>
+<td>2</td>
+<td>ADDR_3</td>
+</tr>
+<tr>
+<td>14</td>
+<td>PF04</td>
+<td>-</td>
+<td>SRAM</td>
+<td>1</td>
+<td>ADDR_4</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PF05</td>
+<td>-</td>
+<td>SRAM</td>
+<td>44</td>
+<td>ADDR_5</td>
+</tr>
+<tr>
+<td>49</td>
+<td>PF11</td>
+<td>-</td>
+<td>Button/Encoder</td>
+<td>Close to D4007 Label</td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>PF13</td>
+<td>-</td>
+<td>SRAM</td>
+<td>42</td>
+<td>ADDR_7</td>
+</tr>
+<tr>
+<td>54</td>
+<td>PF14</td>
+<td>-</td>
+<td>SRAM</td>
+<td>27</td>
+<td>ADDR_8</td>
+</tr>
+<tr>
+<td>55</td>
+<td>PF15</td>
+<td>-</td>
+<td>SRAM</td>
+<td>26</td>
+<td>ADDR_9</td>
+</tr>
+<tr>
+<td>56</td>
+<td>PG00</td>
+<td>-</td>
+<td>SRAM</td>
+<td>25</td>
+<td>ADDR_10</td>
+</tr>
+<tr>
+<td>57</td>
+<td>PG01</td>
+<td>-</td>
+<td>SRAM</td>
+<td>24</td>
+<td>ADDR_11</td>
+</tr>
+<tr>
+<td>92</td>
+<td>PG07</td>
+<td>-</td>
+<td>Home Button</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>93</td>
+<td>PG08</td>
+<td>-</td>
+<td>Power Button</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>127</td>
+<td>PG12</td>
+<td>-</td>
+<td>POWR605</td>
+<td>15</td>
+<td>IN_OUT5</td>
+</tr>
+<tr>
+<td>128</td>
+<td>PG13</td>
+<td>-</td>
+<td>POWR605</td>
+<td>17</td>
+<td>IN_OUT4</td>
+</tr>
+<tr>
+<td>23</td>
+<td>PH00</td>
+<td>-</td>
+<td>OSC</td>
+<td>1</td>
+<td>OSC_IN</td>
+</tr>
+<tr>
+<td>24</td>
+<td>PH01</td>
+<td>-</td>
+<td>OSC</td>
+<td>2</td>
+<td>OSC_OUT</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accessory-connector">Accessory Connector</h2>
+<p>The accessory connector is a blue edge-connect PCB connector. See the example pcb for the layout of a mating PCB. The following table matches the pinout when looking into the side connector:</p>
+<table>
+<thead>
+<tr>
+<th>Pin #</th>
+<th>Function</th>
+<th>xxx</th>
+<th>Pin #</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>TX (Out)</td>
+<td>------</td>
+<td>10</td>
+<td>?</td>
+</tr>
+<tr>
+<td>7</td>
+<td>RX (In)</td>
+<td>------</td>
+<td>8</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>5</td>
+<td>?</td>
+<td>------</td>
+<td>6</td>
+<td>?</td>
+</tr>
+<tr>
+<td>3</td>
+<td>?</td>
+<td>------</td>
+<td>4</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1</td>
+<td>?</td>
+<td>------</td>
+<td>2</td>
+<td>+24V</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Photo of Side Connector with Pin Numbering" src="/docs/images/airsense-side-annotated.jpg" /></p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: April 21, 2020
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../hardware/" title="Airsense S10 Hardware" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Airsense S10 Hardware
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../testpoints/" title="Useful Test Points" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Useful Test Points
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

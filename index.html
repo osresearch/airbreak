@@ -1,0 +1,964 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+<meta property="og:title" content="Airbreak: Jailbreak your CPAP machine">
+<meta property="og:description" content="Tools to turn your CPAP device into an emergency ventilator">
+<meta property="og:url" content="https://airbreak.dev/">
+<meta property="og:image" content="https://airbreak.dev/images/sprintf.jpg">
+
+    
+      
+        <title>Airbreak Overview - airbreak</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jailbreak-your-cpap-machine-with-airbreak" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="." title="airbreak" class="md-header-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            airbreak
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Airbreak Overview
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="airbreak" class="md-nav__button md-logo" aria-label="airbreak">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    airbreak
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/osresearch/airbreak/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+    
+    <label class="md-nav__link" for="nav-1">
+      Guide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Airbreak Overview
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="." title="Airbreak Overview" class="md-nav__link md-nav__link--active">
+      Airbreak Overview
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-features" class="md-nav__link">
+    Major features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-features" class="md-nav__link">
+    Development features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-cpap-and-bipap-machines" class="md-nav__link">
+    What's the difference between CPAP and BiPAP machines?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-jailbroken-cpap-devices-be-used-to-treat-covid-patients" class="md-nav__link">
+    Can jailbroken CPAP devices be used to treat COVID patients?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-hacked-machines-alleviate-the-shortage-of-ventilators" class="md-nav__link">
+    Could hacked machines alleviate the shortage of ventilators?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-homebrew-firmware-go-through-fda-approval" class="md-nav__link">
+    Could homebrew firmware go through FDA approval?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-whats-the-point" class="md-nav__link">
+    So what's the point?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-details" class="md-nav__link">
+    More details
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="disassembly/" title="Disassembly" class="md-nav__link">
+      Disassembly
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="firmware/" title="Firmware" class="md-nav__link">
+      Firmware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="evaluation/" title="Evaluation" class="md-nav__link">
+      Evaluation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Information
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Information" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Hardware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Hardware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/hardware/" title="Airsense S10 Hardware" class="md-nav__link">
+      Airsense S10 Hardware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/pinouts/" title="Pinouts" class="md-nav__link">
+      Pinouts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/testpoints/" title="Useful Test Points" class="md-nav__link">
+      Useful Test Points
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Software
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/tcl/" title="OpenOCD Scripts" class="md-nav__link">
+      OpenOCD Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/windows/" title="Windows Setup Instructions" class="md-nav__link">
+      Windows Setup Instructions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Firmware
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Firmware" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Firmware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/firmware-docs/" title="Documentation" class="md-nav__link">
+      Documentation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="info/extensions/" title="Development" class="md-nav__link">
+      Development
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-features" class="md-nav__link">
+    Major features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-features" class="md-nav__link">
+    Development features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-cpap-and-bipap-machines" class="md-nav__link">
+    What's the difference between CPAP and BiPAP machines?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-jailbroken-cpap-devices-be-used-to-treat-covid-patients" class="md-nav__link">
+    Can jailbroken CPAP devices be used to treat COVID patients?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-hacked-machines-alleviate-the-shortage-of-ventilators" class="md-nav__link">
+    Could hacked machines alleviate the shortage of ventilators?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-homebrew-firmware-go-through-fda-approval" class="md-nav__link">
+    Could homebrew firmware go through FDA approval?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-whats-the-point" class="md-nav__link">
+    So what's the point?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-details" class="md-nav__link">
+    More details
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <p><img alt="CPAP running custom firmware" src="images/ventilator-animated.gif" /></p>
+<h1 id="jailbreak-your-cpap-machine-with-airbreak">Jailbreak your CPAP machine with Airbreak</h1>
+<p>In light of the COVID-19 crisis and resultant
+shortage of medical equipment, <a href="https://health.mountsinai.org/blog/mount-sinai-turns-hundreds-of-machines-for-sleep-apnea-into-hospital-ventilators-shares-instructions-worldwide/">hospitals have developed protocols for
+using BiPAP (BIlevel Positive Airway Pressure) machines as non-invasive
+ventilators</a>,
+the <a href="https://www.fda.gov/media/136702/download">FDA has approved the use of these modified BiPAP devices as ventilators</a>,
+and <a href="https://github.com/PubInv/covid19-vent-list">several groups</a>
+are currently working on ventilator designs that involve a
+converted BiPAP.  However, CPAP (Constant Positive Airway Pressure) devices
+are cheaper, more widely available, and similar both electrically
+and mechanically.  Unfortunately, they are lacking in some features that
+the physicians require and, according to their manufacturer, CPAP
+machines "<a href="https://www.resmed.com/en-us/covid-19/"><em>would require significant rework in order to function as
+a ventilator</em></a>".</p>
+<p>What we have done is to "<em>jailbreak</em>" the the Airsense 10 CPAP
+machine, a common, low-cost sleep therapy device
+intended to treat sleep apnea, so that it is possible to run additional
+tasks on the device. These new tasks add the features and adjust the range of
+parameters that make it possible, along with extra equipment like viral filters,
+to use the device as a temporary ventilator.
+This can help ease the shortage until more real ventilators are available.</p>
+<p>Our changes bring the Airsense S10 to near feature parity with BiPAP
+machines from the same manufacturer, boost the maximum pressure output
+available, and provide a starting point to add more advanced emergency
+ventilator functionality.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>While we are consulting with doctors to validate that the modified
+firmware works as intended, the codebase in its current form should
+be considered a <strong>proof of concept</strong> and is
+<strong>not intended for use in a life-support capacity</strong>.
+Additional equipment like <strong>viral filters</strong> and <strong>monitoring alarms</strong>
+are also required.
+Please see the <a href="#faq">FAQ</a> for more information.</p>
+<p>No IP belonging to device manufacturers is hosted in this repository,
+nor will it be accepted as a pull request.</p>
+<h2 id="major-features">Major features</h2>
+<ul>
+<li>Adds a Pressure Control Ventilator (PCV) mode that oscillates between high and low pressure at a configurable breathing rate (stock firmware supports only a single pressure, with no breath rate control).</li>
+<li>Allows maximum pressure to be increased to 30 cm H<sub>2</sub>O, as required by clinical protocols (stock firmware is limited to 20cm H<sub>2</sub>O).</li>
+<li>Allows smooth rapid pressure change rates for respiration rates up to 30 breaths per minute (stock firmware changes pressure at less than 1 cm/sec).</li>
+<li>Unlocks all of the vendor modes and tunable configuration parameters, including ST and iVAPS modes present in the firmware.</li>
+<li>Provides access to all of the sensors (flow, pressure, temperature, tidal volume, minute ventilation, etc).</li>
+<li>Displays real-time graphs on the screen to show an immediate history of sensor data.</li>
+</ul>
+<h2 id="development-features">Development features</h2>
+<ul>
+<li>Visual and audible alarms when flow stoppage or leakage rates are detected.</li>
+<li>Closed loop air volume control with backup respiration rates and supplemental O<sub>2</sub>.</li>
+<li>GPIO interface with other systems.</li>
+<li>Display statistics in conformance with <a href="https://docs.google.com/spreadsheets/d/17EJ9TN6O1wqP4c-lIn5hbmuMRrto7M_KXHf17zjNSLk/edit#gid=704151435">Rapidly Manufactured Ventilator Standards</a>.</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<h3 id="whats-the-difference-between-cpap-and-bipap-machines">What's the difference between CPAP and BiPAP machines?</h3>
+<p><img alt="Therapy mode menu on an unlocked Airsense 10 CPAP machine" src="images/airsense-modes.jpg" /></p>
+<p>The Airsense 10 that we have modified is a low cost sleep therapy device
+that provides a <em>Constant</em> Positive Air Pressure to help with sleep apnea and
+other disorders.  This CPAP mode applies constant pressure to the lungs,
+but it does not ventilate, or let air move in and out of the lungs.</p>
+<p>The BiPAP machines are more capable devices to treat sleep apnea
+and COPD that provide <em>Bi-level</em> Positive Airway Pressure.  Bi-level
+pressure <em>triggers</em> on patient breaths, applying higher pressure when
+the patient tries to breathe in, and a lower pressure when the patient
+tries to exhale.  This is what's called a <em>support</em> mode, which provides
+additional pressure support to a patient's natural breathing.</p>
+<p>These differences apply to the devices as they function <strong>out of the box</strong>.
+Our work indicates that the actual difference between a low-end
+CPAP device and a high-end iVAPS device is just a <strong>software upgrade</strong>.
+The CPAP machines have many of the same sensors as the more
+expensive models, and the Airsense 10 CPAP devices include in their
+firmware all of the other modes, such as iVAPS and BiPAP-ST.
+When we unlock that mode in software, the CPAP device functions like a
+much more capable and expensive iVAPS device.</p>
+<p>This idea, that the difference between CPAP and BiPAP machines is a
+<em>software</em> change rather than a <em>hardware</em> change, is at the root of
+our work.  If the common, highly distributed CPAP devices could have a
+software upgrade that turns them into iVAPS or BiPAP-ST devices capable
+of ventilating COVID patients, that would be a huge boon to the hospitals
+and health care workers around the world who are struggling with a lack
+of ventilators or alternatives to treat the influx of COVID patients.</p>
+<p>Adding a homebrew function to the existing firmware that alternates
+between pressures with a configurable delay allows the CPAP to effectively
+function as a Pressure Control Ventilator (PCV) for sedated patients.
+Enabling the vendor-provided iVAPS mode,
+along with <a href="info/extensions">further customization and new extensions</a>,
+should make the devices even more flexible and suitable for clinical use.</p>
+<h3 id="can-jailbroken-cpap-devices-be-used-to-treat-covid-patients">Can jailbroken CPAP devices be used to treat COVID patients?</h3>
+<p>We want to be very clear here: this modified firmware should <strong>not</strong> be
+flashed on CPAP machines and used to treat COVID patients immediately.
+The firmware that we've developed is an effective demonstration of
+the capability, and while it has been <a href="evaluation">reviewed and validated by expert
+researchers, biomedical engineers, and clinical pulmonologists</a>, it has
+not yet been put through FDA approval.  Additionally, the
+<a href="https://health.mountsinai.org/wp-content/uploads/sites/14/2020/04/NIV-to-Ventilator-Modification-Protocol-v1.02-for-posting.pdf">Mt Sinai's protocols for off-label non-invasive ventilation</a>
+require additional modifications such as viral filter and remote control
+before the machines would be ready for clinical use.</p>
+<h3 id="could-hacked-machines-alleviate-the-shortage-of-ventilators">Could hacked machines alleviate the shortage of ventilators?</h3>
+<p>If the manufacturers developed their own firmware updates, or the FDA
+approves our jailbroken firmware, this could have an extremely large role
+in bridging the ventilator shortage gap.
+There are millions of unused or underutilized CPAP and BiPAP devices sitting in
+closets in America, and roughly another 500,000 units in warehouses in
+the country.  These devices can be used as an alternate ventilator, for
+low-resource hospitals who are still waiting for the hospital ventilators
+to arrive.</p>
+<h3 id="could-homebrew-firmware-go-through-fda-approval">Could homebrew firmware go through FDA approval?</h3>
+<p><img alt="Airsense 10 CPAP machine with iVAPS configuration menu" src="images/airsense-ivaps.jpg" /></p>
+<p>If there were no other option, our firmware could go through FDA approval,
+but we believe that the best route for rolling out these upgrades is
+to work with the manufacturers to use their resources to validate and
+distribute these upgrades safely and at scale.  There are three main
+factors at play here:</p>
+<ul>
+<li>
+<p>The first is a regulatory/safety one:  Under the recently-released
+FDA guidance on hardware and software modification of CPAP and BiPAP
+devices to treat COVID patients, the manufacturer has carte blanche
+to release an updated version of their firmware for their own devices
+without requiring explicit FDA approval -- they are in the best position
+from a technical, expertise, safety and regulatory perspective.</p>
+</li>
+<li>
+<p>The second is a practical one:  There are many different models of
+CPAP and BiPAP devices, and reverse-engineering is a slow and painful
+process. We modified the firmware on the most common model of CPAP in
+America in about a week, but to get lots of ventilators quickly, you'd
+need a firmware modification for every mode of CPAP.
+What we've found in our work is that the work needed
+for the manufacturer to implement these upgrades is pretty minimal --
+the manufacturer has access to the source code, to the schematics,
+and to the engineers who are intimately familiar with physiology and
+safety standards.  We've found that, in many cases, the bulk of the
+work has already gone through FDA approval, like the iVAPS menu that
+is in the firmware on the ResMed Airsense device shown above.  Even if other
+manufacturers had not written a line of code for their CPAP models, the
+pressure-control ventilator mode that we were able to implement
+is very simple to develop, designed to work on every CPAP device in
+existence, and would be a very low technology and regulatory barrier
+for manufacturers with the right people and resources.</p>
+</li>
+<li>
+<p>The third is related to making these jailbreaks at scale:  We could take
+in every unused CPAP device in the country, <a href="disassembly">unscrew the case</a>
+and <a href="firmware">re-flash the firmware</a>.  It's slow and expensive but could
+be solved with lots and lots of people.  The thing is, of the 8 million
+CPAPs in the country, almost all 5 million shipped over the last 3 years
+have an always-on cellular IoT connection, reporting back usage
+information to doctors and insurance companies.  That cellular
+connection also has over-the-air upgrade capability that can only be
+accessed from within the IT infrastructure of the device manufacturers.
+This is a big deal -- it means that they can selectively upgrade, by
+serial number, specific units to function as ventilators, without having
+to open them up -- it can all work over the air.</p>
+</li>
+</ul>
+<h3 id="so-whats-the-point">So what's the point?</h3>
+<p><img alt="Onscreen graphs" src="images/sprintf.jpg" /></p>
+<p>What our firmware does is show that it is possible to re-program these
+devices in a way that doctors can use to effectively ventilate COVID
+patients. We have been able to confirm the functionality of the devices
+in instrumented patient circuits operated by experts in pulmonological
+measurement. And there are doctors who agree that, if they had an
+FDA-approved machine that could that can do what these machines are doing,
+then they could use them to clinically ventilate COVID patients in an ICU.</p>
+<p>We do have a path to get this firmware through FDA, and we would apply for
+FDA approval under the Emergency Use Authorization if the manufacturers
+absolutely refused to cooperate, but the safest and best path is for
+the manufacturers to enable this upgrade on their own.</p>
+<p>Separately from the very pressing COVID issues, Airbreak allows
+CPAP device owners to write their own <a href="info/extensions">extensions to customize their
+devices for their needs</a>, similar to what the <a href="https://magiclantern.fm">Magic
+Lantern</a> firmware does for cameras.  They can
+add features like the on-screen graphs shown above, or integrate external
+systems through the expansion port.  Additionally, these tools allow
+the owners and users to gain a better understand their own therapy by
+gaining access to the sensors on the device.</p>
+<h2 id="more-details">More details</h2>
+<ul>
+<li><a href="evaluation">Laboratory evaluation</a></li>
+<li><a href="/disassembly">Disassembly and wiring instructions</a></li>
+<li><a href="/firmware">Firmware flashing guide</a></li>
+<li><a href="info/extensions">Writing extensions</a></li>
+<li><a href="https://github.com/osresearch/airbreak">github.com/osresearch/airbreak</a></li>
+<li><a href="mailto://info@airbreak.dev">info@airbreak.dev</a></li>
+</ul>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: April 15, 2020
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="disassembly/" title="Disassembly" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Disassembly
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
