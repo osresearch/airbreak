@@ -26,29 +26,33 @@ configuration bits in the firmware.
 Here are some of the components on the AirSense S10 
 
 Main PCB
+
 | Part  		| Part No. | Manufacturer | Reference | Additional |
 | ---			| --- | --- | --- | --- |
 | Main uC		| STM32F405ZGT6 (LQFP144) | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/stm32f405zg.pdf) | [Reference Manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf) | 
-| Aux uC		| STM8S005 (TQFP48) |  STMicroelectronics | [Datasheet](https://www.st.com/content/ccc/resource/technical/document/datasheet/21/5a/57/8b/f4/49/4a/12/DM00037613.pdf/files/DM00037613.pdf/jcr:content/translations/en.DM00037613.pdf)  | [Reference Manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf)   | 
-| Power watchdog IC	| POWR605  | Lattice | [Datasheet](http://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/ProcessorPM-POWR605DataSheet.pdf) | Monitors pressures - see notes below.
+| Aux uC		| STM8S005 (TQFP48) |  STMicroelectronics | [Datasheet](https://www.st.com/content/ccc/resource/technical/document/datasheet/21/5a/57/8b/f4/49/4a/12/DM00037613.pdf/files/DM00037613.pdf/jcr:content/translations/en.DM00037613.pdf)  | [Reference Manual](https://www.st.com/resource/en/reference_manual/cd00190271-stm8s-series-and-stm8af-series-8bit-microcontrollers-stmicroelectronics.pdf) | 
+| Power watchdog IC	| POWR605  | Lattice | [Datasheet](http://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/ProcessorPM-POWR605DataSheet.pdf) | Monitors pressures - see notes below|
 | Main Pressure Sensor  | NPA-300M-015A | Amphenol | [Datasheet](https://amphenol-sensors.com/en/component/edocman/212-novasensor-npa-surface-mount-pressure-sensors-datasheet/download?Itemid=8429) | Operates in analog mode |
 | Differential Pressure Sensor | SDP8xx | Sensirion | [Datasheet](https://www.sensirion.com/en/about-us/company/technology/cmosens-technology-for-gas-flow/) | Digital mode, manifold mount |
 | Programming Header	| TC2050-IDC | Tag-Connect LLC | [DigiKey](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366) | 
 | Motor Driver | DRV8302 | Texas Instruments | [DigiKey](https://www.digikey.com/product-detail/en/tag-connect-llc/TC2050-IDC/TC2050-IDC-ND/2605366) | 
 | Serial EEPROM | M95M02 | STMicroelectronics | [Datasheet](https://www.st.com/resource/en/datasheet/m95m02-dr.pdf) | 
-| LCD | TM024HDZ29 | Tianma | [Similar datasheets](https://www.beyondinfinite.com/product/lcd/tianma_lcd_display.html) | [Closest we could find](https://www.beyondinfinite.com/lcd/Library/Tianma/TM024HDZ73.pdf)
+| LCD | TM024HDZ29 | Tianma | [Similar datasheets](https://www.beyondinfinite.com/product/lcd/tianma_lcd_display.html) | [Closest we could find](https://z3d9b7u8.stackpathcdn.com/pdf-down/T/M/0/TM024HDH30-01-Tianma.pdf)|
 | Relay Driver | A2550 | Allegro | [Datasheet](https://www.allegromicro.com/~/media/Files/Datasheets/A2550-Datasheet.ashx) | Function unknown; accessory? | 
 | Logic Voltage Regulator (x2) | ISL9000A | Renesas | [Datasheet](https://www.mouser.ca/datasheet/2/698/isl9000a-1529533.pdf) | Generates 3.3v and 5v logic voltages | 
-| Top Switch | B3F-3125 | Omrom | [Digikey](https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3F-3125/SW851-ND/368368) | In case switch needs to be replaced (confirmed exact fit).
+| Top Switch | B3F-3125 | Omrom | [Digikey](https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3F-3125/SW851-ND/368368) | In case switch needs to be replaced (confirmed exact fit)|
 
 Cellular Module & Antenna (CAM) Board
+
 | Part  		| Part No. | Manufacturer | Reference | Additional |
 | ---			| --- | --- | --- | --- |
+| Main uC		| R5F5210ABDFP | Renesas | [Datasheet](https://www.renesas.com/eu/en/doc/products/mpumcu/doc/rx_family/r01ds0041ej0150_rx210.pdf) | LFQFP 100-pin |
 | CDMA Radio Module| ce910-dual | Telit | [Datasheet](https://static6.arrow.com/aropdfconversion/1e95506f859937cecfcd3d7fd07cc25d6eab906d/telit_ce910-dual_datasheet.pdf) | [qualcomm qsc1105 chipset](https://fccid.io/RI7CE910-DUAL/Internal-Photos/Internal-Photos-1760716) |
-| 3G Radio Module| HE910-D | Telit | [Datasheet](hhttps://www.telit.com/wp-content/uploads/2017/09/160229_DS_HE910.pdf) | Unkown chipset, [FCC photos obscured] https://fccid.io/RI7HE910/Internal-Photos/Internal-Photos-1654391|
+| 3G Radio Module| HE910-D | Telit | [Datasheet](hhttps://www.telit.com/wp-content/uploads/2017/09/160229_DS_HE910.pdf) | [Uknown chipset- FCC photos obscured](https://fccid.io/RI7HE910/Internal-Photos/Internal-Photos-1654391)|
 | 4G Radio Module| cinterion els61-us | Gemalto | [Datasheet](https://www.gemalto.com/brochures-site/download-site/Documents/M2M_ELS61_datasheet.pdf) | Cat 1 LTE w/ 2G/3G fallback | 
 
 Alarm Board (Only A10STACD, A10STA3G, AIR104G)
+
 | Part  		| Part No. | Manufacturer | Reference | Additional |
 | ---			| --- | --- | --- | --- |
 | Main uC		| R5F21358CNFP | Renesas | [Datasheet](https://4donline.ihs.com/images/VipMasterIC/IC/RNCC/RNCCS11762/RNCCS11762-1.pdf) | [Avnet](https://www.avnet.com/shop/emea/products/renesas-electronics/r5f21358cnfp-30-3074457345629542777/) |
