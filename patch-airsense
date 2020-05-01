@@ -49,7 +49,7 @@ patch_code() {
 	if [ -r breath.bin ] && [ $version = "401" ] ; then
 		echo "Including breath.bin"
 		cat breath.bin | patch 0xbb734 || die "binary patch failed"
-	elif [ -r breath.bin ] && [ $version = "401" ] ; then
+	elif [ -r breath.bin ] && [ $version = "306" ] ; then
                 echo "Including breath.bin"
                 cat breath.bin | patch 0xbb4d4 || die "binary patch failed"
 	else
