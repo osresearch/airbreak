@@ -20,24 +20,24 @@ patch() {
 	dd bs=1 seek=$offset conv=notrunc of="$OUT" status=none
 }
 
-echo "533b91127aa22e05b933db203ad56c449dc12a8c3fd62f57bd88c472a8061775  $IN"\
+echo "A5E7D77FC7B2FE38DA82A7D99035CECD40749398DA31F7E39634C002E7081CC7  $IN"\
 | sha256sum --check \
 || die "$IN: wrong hash"
 
 cp "$IN" "$OUT" || die "$OUT: copy failed"
 
 # also patch up the jump instruction that checks for tamper
-printf '\xc0\x46' | patch 0xf0 \
+printf '\xc0\x46' | patch 0xf2 \
 || die "startup patch failed" \
 
 # and add a message so that we know this is a modified firmware
 printf 'HACKED!' | patch 0x17500 || die failed
-printf 'NOT FOR USE\x0' | patch 0x1a540 || die failed
+printf 'NOT FOR USE\x0' | patch 0x1a5b0 || die failed
 printf 'WARNING! WARNING! Ventilator test firmware: Not for humans!\x00' | patch 0x1b860 || die failed
 
 BUILD_FLAGS=0
 
-patch_code() {
+#patch_code() {
 	#if you want to add the extra breath mode
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 0) ))
 
@@ -58,11 +58,11 @@ patch_code() {
 unlock_ui_limits() {
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 1) ))
 	# patch UI limits to range between 1 and 30
-	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fa8 || die failed
-	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fc4 || die failed
-	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7eb0 || die failed
-	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ee8 || die failed
-	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ecc || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fb0 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fcc || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7eb8 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ef0 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ed4 || die failed
 }
 
 
@@ -70,7 +70,7 @@ extra_debug() {
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 2) ))
 	# set config variable 0xc value to 4 == enable more debugging data on display
 	# if you set it to \x0f it will enable four separate display pages of info in sleep report mode
-	printf '\x04' | patch 0x84a8 || die failed
+	printf '\x04' | patch 0x84b0, || die failed
 }
 
 extra_modes() {
@@ -78,22 +78,21 @@ extra_modes() {
 	# add more mode entries, set config 0x0 mask to all bits high
 	# default is 0x3, which only enables mode 1 (CPAP) and 2 (AutoSet)
 	# ---> This is the real magic <---
-	printf '\xff\xff' | patch 0x8590 || die failed
+	printf '\xff\xff' | patch 0x8598 || die failed
 }
 
-extra_menu() {
+#extra_menu() {
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 4) ))
 	# try enabling extra menu items
 	printf '\x01\x20' | patch 0x66470
 }
 
-# If you want all menu items to always be visible, let this section run
 all_menu() {
 	BUILD_FLAGS=$(( BUILD_FLAGS | (1 << 5) ))
 	# force status bit 5 always on -- always editable
-	printf '\x01\x20' | patch 0x6e502
+	printf '\x01\x20' | patch 0x6e50a
 	# force status bit 4 always on -- this makes all the inputs show up, regardless of mode
-	printf '\x01\x20' | patch 0x6e4c4
+	#printf '\x01\x20' | patch 0x6e4c4
 }
 
 gui_config () {
@@ -101,7 +100,7 @@ gui_config () {
 	# enable all of the editable options in the settings menu
 	# by turning on bit 1 of the config entries.  All of these variables
 	# are listed in the gui_create_menus function
-	GUI_CONFIG=0x4ef4
+	GUI_CONFIG=0x4efc
 	GUI_CONFIG_SIZE=0x1c
 	GUI_CONFIG_OFFSET=30
 
@@ -115,18 +114,18 @@ gui_config () {
 	done
 }
 
-patch_code
+#patch_code
 unlock_ui_limits
 extra_debug
 extra_modes
-extra_menu
-#all_menu
+#extra_menu
+all_menu
 gui_config
 
-FLAGSTR=$(printf 'FLAGS=0x%02x' $BUILD_FLAGS)
-printf $FLAGSTR | patch 0x17588
+#FLAGSTR=$(printf 'FLAGS=0x%02x' $BUILD_FLAGS)
+#printf $FLAGSTR | patch 0x17588
 
-COMMIT_HASH=$(git log -n1 --format=format:"%H" | head -c 7)
-printf 'GIT=%s\x00' $COMMIT_HASH | patch 0x17764
+#COMMIT_HASH=$(git log -n1 --format=format:"%H" | head -c 7)
+#printf 'GIT=%s\x00' $COMMIT_HASH | patch 0x17764
 
 sha256sum $OUT
