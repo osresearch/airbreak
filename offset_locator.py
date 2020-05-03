@@ -13,6 +13,7 @@ def comparer(file1, file2):
     for counter1 in range(len(content1)):
         offset1, hexvalue1 = content1[counter1][0:8], content1[counter1][10:49]
         offset2, hexvalue2 = content2[counter1][0:8], content2[counter1][10:49]
+        matched = False
         if hexvalue1 == "0000 0000 0000 0000 0000 0000 0000 0000":
             output.write(offset1+" is 0's, \"\"\n")
         elif hexvalue1 == "FFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFF":
@@ -21,8 +22,9 @@ def comparer(file1, file2):
             for counter2 in range(len(content2)):
                 offset2, hexvalue2 = content2[counter2][0:8], content2[counter2][10:49]
                 if hexvalue1 == hexvalue2:
+                    matched = True
                     output.write("\"=\"\""+offset1+"\"\"\""+", \"=\"\""+offset2+"\"\"\"\n")
-                if counter2 == len(content2)-1 and hexvalue1 != hexvalue2:
+                if counter2 == len(content2)-1 and not matched:
                     output.write("\"=\"\""+offset1+"\"\"\""+", No Match\n")
 
 
