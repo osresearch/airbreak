@@ -17,11 +17,11 @@ def comparer(file1, file2):
             print("Offset mismatch. Please run 'xxd -c 1 <file> > <file>.hex on both files again")
             exit(1)
         if hexvalue1 != hexvalue2:
-            output.write(""+offset1+", "+hexvalue1+", "+hexvalue2+"\n")
+            output.write("\"=\"\""+offset1+"\"\"\""+", \"=\"\""+hexvalue1+"\"\"\""+", \"=\"\""+hexvalue2+"\"\"\"""\n")
+            # "=""123"""
 
 
 if len(sys.argv) == 3 and sys.argv[1][-3:] != "bin" and sys.argv[2][-3:] != "bin":
-
     with open(sys.argv[1],"r") as file1, open(sys.argv[2],"r") as file2:
         comparer(file1,file2)
 else:
