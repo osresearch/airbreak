@@ -17,7 +17,7 @@ def comparer(file1, file2):
             print("Offset mismatch. Please run 'xxd -c 1 <file> > <file>.hex on both files again")
             exit(1)
         if hexvalue1 != hexvalue2:
-            output.write("\"=\"\""+offset1+"\"\"\""+", \"=\"\""+hexvalue1+"\"\"\""+", \"=\"\""+hexvalue2+"\"\"\"""\n")
+            output.write("\"=\"\""+offset1+"\"\"\""+", \"=\"\""+hexvalue1+"\"\"\""+", \"=\"\""+hexvalue2+"\"\"\"\n")
             # "=""123"""
 
 
