@@ -123,9 +123,9 @@ all_menu
 gui_config
 
 #FLAGSTR=$(printf 'FLAGS=0x%02x' $BUILD_FLAGS)
-printf $FLAGSTR | patch 0x17588
+#printf $FLAGSTR | patch 0x17588
 
 #COMMIT_HASH=$(git log -n1 --format=format:"%H" | head -c 7)
-printf 'GIT=%s\x00' $COMMIT_HASH | patch 0x17764
+#printf 'GIT=%s\x00' $COMMIT_HASH | patch 0x17764
 
 sha256sum $OUT
