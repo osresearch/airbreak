@@ -7,7 +7,7 @@ def comparer(file1, file2):
         print("Something went wrong. Length mismatch")
         exit(1)
     output = open("offset_differences.csv", "w")
-    # Looks weird, but just doing some CSV formatting
+    # Grabbing the filename. It's weird, but it works
     output.write("offset, " + str(file1).split("name='")[1].split("'")[0] + ", " +
         str(file2).split("name='")[1].split("'")[0] + "\n")
     for counter in range(len(content1)):
@@ -17,6 +17,7 @@ def comparer(file1, file2):
             print("Offset mismatch. Please run 'xxd -c 1 <file> > <file>.hex on both files again")
             exit(1)
         if hexvalue1 != hexvalue2:
+            # Looks weird, but just doing some CSV formatting
             output.write("\"=\"\""+offset1+"\"\"\""+", \"=\"\""+hexvalue1+"\"\"\""+", \"=\"\""+hexvalue2+"\"\"\"\n")
             # "=""123"""
 
