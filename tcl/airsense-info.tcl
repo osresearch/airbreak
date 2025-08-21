@@ -92,3 +92,13 @@ proc h {} {
 	echo "\tp        : print all values"
 	echo "\th        : show this help screen"
 }
+
+# ------------------------------------------------------------------
+# Faycal Kilalis Postboot fix
+
+proc postboot {} {
+    # resume execution at the reset vector
+    echo "Jumping to application…"
+    reset run
+}
+# ------------------------------------------------------------------
