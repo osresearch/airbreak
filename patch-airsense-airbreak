@@ -1,0 +1,109 @@
+#!/bin/bash
+#
+# patch-airsense variant verified against MULTIPLE AirSense 10 firmware images.
+#
+# The upstream patch-airsense hardcodes one SX567-0401 build
+# (533b9112...). But the same version label covers several byte-different
+# builds (different catalog numbers / C2C vs non-C2C), so it rejects other
+# units on the sha256 check even when the actual patch offsets are the same.
+#
+# This script accepts any image in KNOWN_GOOD below, all of which were
+# inspected and confirmed to share the offset layout used here:
+#
+#   363a204ba217f31223e929365d58b8f5ce038a7681e362fe157e190c2eacbd30  SX567-0306 (pre-OTA)
+#   a8d740fce5840d48078c71b39c2682d63d61466b3d6a10dfda3c37111ced8844  SX567-0401 (C2C variant)
+#   cb94bc19cf89a7a2f910ef5c0286e6ab1c894f213642c2c4ec42eb63dfb8e532  SX567-0401 (variant)
+#
+# Verified-common offsets on both images:
+#   * mode mask 0x8590 = 03 00  -> ff ff                 (extra_modes: the unlock)
+#   * tamper `bne` at 0x80000f2 (cmp at 0xf0)  -> NOP     (NOT 0xf0; upstream's
+#     0xf0 is only correct for the 533b9112 build)
+#   * unlock_ui_limits / extra_debug / extra_menu / gui_config: identical offsets
+#
+# Deliberately NOT applied:
+#   * Cosmetic string writes (HACKED!/NOT FOR USE/WARNING/FLAGS=/GIT=): on these
+#     images those offsets hold live UI strings (Home / My Options / Sleep Report
+#     / Are you sure? / Airplane Mode...). Overwriting them garbles the menus
+#     (the cause of the mangled-menu reports in osresearch/airbreak issue #33).
+#   * breath/graph code extensions: need the arm-none-eabi toolchain, and the
+#     breath inject differs per build. Add them back per-image once verified.
+#
+# If the hash is rejected, your image is simply not one of the two verified
+# here -- dump it, inspect the offsets above against it, and add its hash only
+# after confirming they match. Do NOT just add a hash blindly.
+
+die() { echo >&2 "$*" ; exit 1 ; }
+
+IN=$1
+OUT=$2
+[ -n "$IN" -a -n "$OUT" ] || die "Usage: $0 stm32.bin stm32-unlocked.bin"
+[ -r "$IN" ] || die "$IN: can not open input file"
+
+KNOWN_GOOD="
+363a204ba217f31223e929365d58b8f5ce038a7681e362fe157e190c2eacbd30
+a8d740fce5840d48078c71b39c2682d63d61466b3d6a10dfda3c37111ced8844
+cb94bc19cf89a7a2f910ef5c0286e6ab1c894f213642c2c4ec42eb63dfb8e532
+"
+
+HASH=$(sha256sum "$IN" | cut -d' ' -f1)
+echo "$KNOWN_GOOD" | grep -qx "$HASH" \
+	|| die "$IN: sha256 $HASH is not a verified image (see KNOWN_GOOD in this script)"
+echo "$IN: $HASH (verified)"
+
+patch() {
+	offset=`printf "%d" $1`
+	printf "patching %08x\n" $1
+	dd bs=1 seek=$offset conv=notrunc of="$OUT" status=none
+}
+
+cp "$IN" "$OUT" || die "$OUT: copy failed"
+
+# --- tamper check: NOP the `bne` at 0x80000f2 so modified firmware passes ---
+printf '\xc0\x46' | patch 0xf2 || die "tamper patch failed"
+
+unlock_ui_limits() {
+	# UI pressure limits widened (range ~1..30)
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fa8 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x4fc4 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7eb0 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ee8 || die failed
+	printf '\xdc\x05\x00\x00\x32\x00' | patch 0x7ecc || die failed
+}
+
+extra_debug() {
+	# config var 0xc = 4 -> more debug data on display
+	printf '\x04' | patch 0x84a8 || die failed
+}
+
+extra_modes() {
+	# ---> This is the real magic <---
+	# config 0x0 mask -> all bits high (default 0x0003 = CPAP + AutoSet only)
+	printf '\xff\xff' | patch 0x8590 || die failed
+}
+
+extra_menu() {
+	printf '\x01\x20' | patch 0x66470 || die failed
+}
+
+gui_config () {
+	# enable all editable settings-menu options (set bits 0,1,2 of each entry)
+	GUI_CONFIG=0x4ef4
+	GUI_CONFIG_SIZE=0x1c
+	GUI_CONFIG_OFFSET=30
+	for var in \
+		0x2f 0x1ec 0x1ed 0x24 0x25 0x1d3 0x1d6 0x1d5 0x1d7 0x26 \
+		0x1d9 0x1e0 0x1e1 0x1e2 0x1e5 0x1e4 0x1e6 0x1e7 0x1e9 0x1ea 0x1eb \
+	; do
+		ADDR=`perl -e "printf '%d', $GUI_CONFIG + ($var - $GUI_CONFIG_OFFSET) * $GUI_CONFIG_SIZE"`
+		printf '\x07\x00' | patch $ADDR
+	done
+}
+
+unlock_ui_limits
+extra_debug
+extra_modes
+extra_menu
+gui_config
+
+echo "done:"
+sha256sum "$OUT"
